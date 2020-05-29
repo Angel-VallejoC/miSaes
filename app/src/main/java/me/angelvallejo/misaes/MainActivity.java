@@ -1,14 +1,21 @@
 package me.angelvallejo.misaes;
 
 import androidx.appcompat.app.AppCompatActivity;
+import me.angelvallejo.misaes.databinding.ActivityMainBinding;
 
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
+
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+
     }
 }

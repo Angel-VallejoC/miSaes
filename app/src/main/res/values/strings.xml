@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">miSAES</string>
+    <string name="hint_registrationId">Introduce tu boleta</string>
+    <string name="hint_password">Introduce tu password</string>
+    <string name="hint_captcha">Introduce captcha</string>
+    <string name="login_button_text">INICIAR SESIÓN</string>
 </resources>
