@@ -38,7 +38,7 @@ public class SaesParser {
         return parser;
     }
 
-    public void loadLoginPage() throws IOException{
+    public byte[] loadLoginPage() throws IOException{
         // Load the initial page for getting the required cookies
         Connection connection = Jsoup.connect(BASE_URL).method(Connection.Method.GET);
         Connection.Response response = connection.execute();
@@ -59,12 +59,8 @@ public class SaesParser {
                 .ignoreContentType(true) // Needed for fetching image
                 .execute();
 
-        // Load image from Jsoup response
-        //ImageIcon image = new ImageIcon(ImageIO.read(new ByteArrayInputStream(response.bodyAsBytes())));
-        //android.graphics.drawable.Icon icon = new android.graphics.drawable.Icon
 
-        // Show image
-        // JOptionPane.showMessageDialog(null, image, "Captcha image", JOptionPane.PLAIN_MESSAGE);
+        return response.bodyAsBytes();
     }
 
     public Pair<Boolean, String> login(String user, String password, String captcha) throws IOException{
