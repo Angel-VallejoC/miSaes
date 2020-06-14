@@ -7,13 +7,20 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
+import android.widget.Toast;
+
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class MainActivity extends AppCompatActivity
                           implements GetContent.GetContentListener{
     private static final String TAG = "MainActivity";
 
     private ActivityMainBinding binding;
+
+    // TODO: check internet connection before requesting login page
+    // TODO: create session when logging in
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,18 +31,19 @@ public class MainActivity extends AppCompatActivity
         binding.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                binding.progressBar.setVisibility(View.VISIBLE);
-                new GetContent(MainActivity.this)
-                        .execute(
-                                GetContent.Action.LOGIN,
-                                binding.registrationId.getText().toString(),
-                                binding.password.getText().toString(),
-                                binding.captcha.getText().toString()
-                        );
+
+                if (validateForm()) {
+                    binding.progressBar.setVisibility(View.VISIBLE);
+                    new GetContent(MainActivity.this)
+                            .execute(
+                                    GetContent.Action.LOGIN,
+                                    binding.registrationId.getText().toString(),
+                                    binding.password.getText().toString(),
+                                    binding.captcha.getText().toString()
+                            );
+                }
             }
         });
-
-
     }
 
     @Override
@@ -63,15 +71,33 @@ public class MainActivity extends AppCompatActivity
             case LOGIN:
                 boolean isLoggedIn = (boolean) ((Pair) result).first;
                 if (isLoggedIn){
-                    startActivity(new Intent(this, TempActivity.class));
+                    startActivity(new Intent(this, TempActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
                 }
                 else {
                     String errorMessage = (String) ((Pair) result).second;
                     Snackbar.make(binding.rootView, errorMessage, Snackbar.LENGTH_LONG).show();
-                    // when the login is not succesful, login page must be refreshed
+                    // when the login is not successful, login page must be refreshed
                     binding.progressBar.setVisibility(View.VISIBLE);
                     new GetContent(this).execute(GetContent.Action.LOAD_LOGIN);
                 }
         }
+    }
+
+    private boolean validateForm() {
+        boolean isValid = isFieldEmpty(binding.registrationId, binding.registrationIdLayout) &&
+                            isFieldEmpty(binding.password, binding.passwordLayout) &&
+                            isFieldEmpty(binding.captcha, binding.captchaLayout);
+        return isValid;
+    }
+
+    private boolean isFieldEmpty(TextInputEditText editText, TextInputLayout inputLayout){
+        if (editText.getText().toString().trim().length() == 0) {
+            inputLayout.setError(getString(R.string.error_field_required));
+            return false;
+        }
+        else
+            inputLayout.setError(null);
+
+        return true;
     }
 }
