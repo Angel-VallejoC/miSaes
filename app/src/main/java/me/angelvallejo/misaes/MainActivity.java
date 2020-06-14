@@ -1,17 +1,15 @@
 package me.angelvallejo.misaes;
 
-import androidx.appcompat.app.AppCompatActivity;
-import me.angelvallejo.misaes.databinding.ActivityMainBinding;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
-import android.widget.Toast;
-
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import androidx.appcompat.app.AppCompatActivity;
+import me.angelvallejo.misaes.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity
                           implements GetContent.GetContentListener{
