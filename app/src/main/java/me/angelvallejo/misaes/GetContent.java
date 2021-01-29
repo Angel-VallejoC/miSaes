@@ -3,31 +3,20 @@ package me.angelvallejo.misaes;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.util.Pair;
-import android.view.View;
+
 import java.io.IOException;
+
 import me.angelvallejo.misaes.parser.SaesParser;
 
 /**
- *  Class with the unique purpose of executing the methods from {@link SaesParser}
- *  on a background thread
+ * Class with the unique purpose of executing the methods from {@link SaesParser}
+ * on a background thread
  */
-public class GetContent extends AsyncTask< Object ,Void, Pair> {
+public class GetContent extends AsyncTask<Object, Void, Pair> {
     private static final String TAG = "GetContent";
-
-    interface GetContentListener {
-        <T> void onResultReady(GetContent.Action action, T result);
-    }
-
-    enum Action {
-        LOAD_LOGIN,
-        LOGIN,
-        GET_KARDEX,
-        GET_STUDENT_INFO
-    }
-
     private GetContentListener mListener;
 
-    public GetContent(GetContentListener callback){
+    public GetContent(GetContentListener callback) {
         mListener = callback;
     }
 
@@ -39,14 +28,14 @@ public class GetContent extends AsyncTask< Object ,Void, Pair> {
      *                   It is always required to pass as first parameter the type of
      *                   action that needs to be performed.
      * @return A pair where p.first is the type of action performed and p.second is an object
-     *         returned from the parser
+     * returned from the parser
      */
     @Override
     protected Pair doInBackground(Object... parameters) {
 
-        Log.d(TAG, "doInBackground: parameters " + parameters );
+        Log.d(TAG, "doInBackground: parameters " + parameters);
 
-        if (parameters == null || parameters[0] == null){
+        if (parameters == null || parameters[0] == null) {
             throw new IllegalArgumentException("A GetContent.Action must be provided");
         }
 
@@ -69,8 +58,7 @@ public class GetContent extends AsyncTask< Object ,Void, Pair> {
                 case GET_STUDENT_INFO:
                     return Pair.create(parameters[0], SaesParser.getInstance().getStudentInfo());
             }
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             Log.d(TAG, "doInBackground: " + e.getStackTrace());
         }
 
@@ -80,6 +68,7 @@ public class GetContent extends AsyncTask< Object ,Void, Pair> {
 
     /**
      * Calls the class listener with the result of doInBackground method
+     *
      * @param result A pair where p.first is the type of action performed and p.second is an object
      *               returned from the parser
      */
@@ -88,6 +77,17 @@ public class GetContent extends AsyncTask< Object ,Void, Pair> {
         Log.d(TAG, "onPostExecute: result = ");
         if (mListener != null && result != null)
             mListener.onResultReady((GetContent.Action) result.first, result.second);
+    }
+
+    enum Action {
+        LOAD_LOGIN,
+        LOGIN,
+        GET_KARDEX,
+        GET_STUDENT_INFO
+    }
+
+    interface GetContentListener {
+        <T> void onResultReady(GetContent.Action action, T result);
     }
 
 }

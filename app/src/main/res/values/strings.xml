@@ -5,4 +5,24 @@
     <string name="hint_captcha">Captcha</string>
     <string name="login_button_text">INICIAR SESIÓN</string>
     <string name="error_field_required">Este campo es requerido</string>
+
+    <string name="login_title">Iniciar sesión en SAES</string>
+    <string name="login_user_title">Usuario</string>
+    <string name="login_password_title">Contraseña</string>
+    <string name="login_btn_title">Inicia sesión</string>
+    <string name="login_content_des_logo">Logo IPN</string>
+    <string name="login_error_message">Hubo un error al iniciar sesión. Intenta más tarde.</string>
+    <string name="login_user_key">pidae_user</string>
+    <string name="login_password_key">pidae_password</string>
+    <string name="login_pref_key">login_prefs</string>
+    <string name="launch_no_internet_title">Sin conexión a internet</string>
+    <string name="launch_no_internet_message">Necesitas una conexión a internet para acceder a Pidae.</string>
+    <string name="launch_no_internet_button">OK</string>
+    <string name="launch_error">Error al recuperar la sesión, intente más tarde.</string>
+
+    <string name="hello_blank_fragment">Hello fragment</string>
+    <string name="login_captcha_contentDescription">Imagen captcha</string>
+    <string name="login_captcha_title">Captcha</string>
+
+
 </resources>

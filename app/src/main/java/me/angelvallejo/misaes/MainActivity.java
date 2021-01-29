@@ -3,6 +3,8 @@ package me.angelvallejo.misaes;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Pair;
 import android.view.View;
 import com.google.android.material.snackbar.Snackbar;
@@ -12,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import me.angelvallejo.misaes.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity
-                          implements GetContent.GetContentListener{
+        implements GetContent.GetContentListener, TextWatcher {
     private static final String TAG = "MainActivity";
 
     private ActivityMainBinding binding;
@@ -26,20 +28,19 @@ public class MainActivity extends AppCompatActivity
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (validateForm()) {
-                    binding.progressBar.setVisibility(View.VISIBLE);
-                    new GetContent(MainActivity.this)
-                            .execute(
-                                    GetContent.Action.LOGIN,
-                                    binding.registrationId.getText().toString(),
-                                    binding.password.getText().toString(),
-                                    binding.captcha.getText().toString()
-                            );
-                }
+        binding.user.addTextChangedListener(this);
+        binding.password.addTextChangedListener(this);
+        binding.captcha.addTextChangedListener(this);
+        binding.loginButton.setOnClickListener((v) -> {
+            if (validateForm()) {
+                binding.progressBar.setVisibility(View.VISIBLE);
+                new GetContent(MainActivity.this)
+                        .execute(
+                                GetContent.Action.LOGIN,
+                                binding.user.getText().toString(),
+                                binding.password.getText().toString(),
+                                binding.captcha.getText().toString()
+                        );
             }
         });
     }
@@ -56,22 +57,21 @@ public class MainActivity extends AppCompatActivity
         if (binding.progressBar.getVisibility() == View.VISIBLE)
             binding.progressBar.setVisibility(View.INVISIBLE);
 
-        switch (action){
+        switch (action) {
             case LOAD_LOGIN:
                 byte[] captchaResponse = (byte[]) result;
                 binding.captchaImage.setImageBitmap(
                         BitmapFactory.decodeByteArray(
-                                captchaResponse,0,captchaResponse.length
+                                captchaResponse, 0, captchaResponse.length
                         )
                 );
                 return;
 
             case LOGIN:
                 boolean isLoggedIn = (boolean) ((Pair) result).first;
-                if (isLoggedIn){
-                    startActivity(new Intent(this, TempActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
-                }
-                else {
+                if (isLoggedIn) {
+                    startActivity(new Intent(this, TempActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+                } else {
                     String errorMessage = (String) ((Pair) result).second;
                     Snackbar.make(binding.rootView, errorMessage, Snackbar.LENGTH_LONG).show();
                     // when the login is not successful, login page must be refreshed
@@ -82,20 +82,37 @@ public class MainActivity extends AppCompatActivity
     }
 
     private boolean validateForm() {
-        boolean isValid = isFieldEmpty(binding.registrationId, binding.registrationIdLayout) &&
-                            isFieldEmpty(binding.password, binding.passwordLayout) &&
-                            isFieldEmpty(binding.captcha, binding.captchaLayout);
+        boolean isValid = isFieldEmpty(binding.user, binding.userTextLayout) &&
+                isFieldEmpty(binding.password, binding.passwordTextLayout) &&
+                isFieldEmpty(binding.captcha, binding.captchaTextLayout);
         return isValid;
     }
 
-    private boolean isFieldEmpty(TextInputEditText editText, TextInputLayout inputLayout){
+    private boolean isFieldEmpty(TextInputEditText editText, TextInputLayout inputLayout) {
         if (editText.getText().toString().trim().length() == 0) {
             inputLayout.setError(getString(R.string.error_field_required));
             return false;
-        }
-        else
+        } else
             inputLayout.setError(null);
 
         return true;
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+        if (!binding.user.getText().toString().trim().equals("") &&
+                !binding.password.getText().toString().trim().equals("") &&
+                !binding.captcha.getText().toString().trim().equals(""))
+            binding.loginButton.setEnabled(true);
+        else
+            binding.loginButton.setEnabled(false);
     }
 }

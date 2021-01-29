@@ -38,7 +38,9 @@ public class StudentInfo {
         return plan;
     }
 
-    public String getPromedio() { return promedio; }
+    public String getPromedio() {
+        return promedio;
+    }
 
     @Override
     public String toString() {

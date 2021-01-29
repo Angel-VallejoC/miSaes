@@ -1,13 +1,13 @@
 package me.angelvallejo.misaes;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import me.angelvallejo.misaes.databinding.ActivityTempBinding;
 import me.angelvallejo.misaes.parser.models.StudentInfo;
 
-import android.os.Bundle;
-
 public class TempActivity extends AppCompatActivity
-                          implements GetContent.GetContentListener {
+        implements GetContent.GetContentListener {
 
 
     private ActivityTempBinding binding;

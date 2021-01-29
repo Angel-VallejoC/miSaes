@@ -1,16 +1,19 @@
 package me.angelvallejo.misaes.parser;
 
 import android.util.Pair;
+
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import me.angelvallejo.misaes.parser.models.Kardex;
 import me.angelvallejo.misaes.parser.models.KardexClass;
 import me.angelvallejo.misaes.parser.models.ScheduleClass;
@@ -26,19 +29,19 @@ public class SaesParser {
 
     private static SaesParser parser;
 
-    private SaesParser(){
+    private SaesParser() {
         cookies = new HashMap<>();
         loginDocument = null;
     }
 
-    public static SaesParser getInstance(){
+    public static SaesParser getInstance() {
         if (parser == null)
             parser = new SaesParser();
 
         return parser;
     }
 
-    public byte[] loadLoginPage() throws IOException{
+    public byte[] loadLoginPage() throws IOException {
         // Load the initial page for getting the required cookies
         Connection connection = Jsoup.connect(BASE_URL).method(Connection.Method.GET);
         Connection.Response response = connection.execute();
@@ -63,7 +66,7 @@ public class SaesParser {
         return response.bodyAsBytes();
     }
 
-    public Pair<Boolean, String> login(String user, String password, String captcha) throws IOException{
+    public Pair<Boolean, String> login(String user, String password, String captcha) throws IOException {
         String actionUrl = "https://www.saes.upiicsa.ipn.mx/Default.aspx?ReturnUrl=%2falumnos%2fdefault.aspx";
 
         // required parameters to login
@@ -95,7 +98,7 @@ public class SaesParser {
 
         Element error = loginDocument.selectFirst("#ctl00_leftColumn_LoginUser > tbody > tr > td > span");
 
-        if ( error == null){ // there is no error, user is logged in
+        if (error == null) { // there is no error, user is logged in
             cookies.clear();
             cookies.putAll(response.cookies());
             return new Pair<>(true, "");
@@ -104,18 +107,18 @@ public class SaesParser {
         return new Pair<>(false, error.ownText());
     }
 
-    public boolean isLoggedIn(){
+    public boolean isLoggedIn() {
         if (loginDocument == null)
             return false;
 
         return loginDocument.select("#ctl00_leftColumn_LoginStatusSession").first() != null;
     }
 
-    public List<ScheduleClass> getStudentSchedule() throws IOException{
+    public List<ScheduleClass> getStudentSchedule() throws IOException {
         if (!isLoggedIn())
             throw new IllegalStateException("User must be logged in to get schedule");
 
-        String scheduleUrl =  loginDocument.select("#ctl00_subMenun10 > td > table > tbody > tr > td > a")
+        String scheduleUrl = loginDocument.select("#ctl00_subMenun10 > td > table > tbody > tr > td > a")
                 .first().absUrl("href");
         Connection connection = Jsoup.connect(scheduleUrl).cookies(cookies)
                 .method(Connection.Method.GET).userAgent(USER_AGENT);
@@ -126,10 +129,10 @@ public class SaesParser {
         Document scheduleDocument = response.parse();
         Elements scheduleTable = scheduleDocument.select("#ctl00_mainCopy_GV_Horario tr:nth-child(n+2)");
 
-        for (Element classRow: scheduleTable){
+        for (Element classRow : scheduleTable) {
 
             ArrayList<String> classDetails = new ArrayList<>();
-            for (int i = 1; i <= 10; i++){
+            for (int i = 1; i <= 10; i++) {
                 classDetails.add(classRow.select("td:nth-child(" + i + ") font").first().text());
             }
 
@@ -154,7 +157,7 @@ public class SaesParser {
         return schedule;
     }
 
-    public StudentInfo getStudentInfo() throws IOException{
+    public StudentInfo getStudentInfo() throws IOException {
         if (!isLoggedIn())
             throw new IllegalStateException("User must be logged in to get the student info");
 
@@ -178,7 +181,7 @@ public class SaesParser {
         );
     }
 
-    public Kardex getKardex() throws IOException{
+    public Kardex getKardex() throws IOException {
         if (!isLoggedIn())
             throw new IllegalStateException("User must be logged in to get student's kardex");
 
@@ -195,12 +198,12 @@ public class SaesParser {
         Kardex kardex = new Kardex();
 
         int levelCount = 0;
-        for (Element kardexElement : kardexElements){
+        for (Element kardexElement : kardexElements) {
             Elements classesTable = kardexElement.select("table > tbody > tr:nth-child(n+3)");
             String levelName = kardexElement.select("table > tbody > tr:nth-child(1) > td").first().ownText();
 
-            for (Element classEntry : classesTable){
-                kardex.addClass( levelCount,levelName, new KardexClass(
+            for (Element classEntry : classesTable) {
+                kardex.addClass(levelCount, levelName, new KardexClass(
                         classEntry.select("td:nth-child(1)").first().ownText(), // clave
                         classEntry.select("td:nth-child(2)").first().ownText(), // materia
                         classEntry.select("td:nth-child(3)").first().ownText(), // fecha

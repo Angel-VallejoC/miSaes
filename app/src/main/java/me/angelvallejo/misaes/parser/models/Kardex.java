@@ -1,19 +1,20 @@
 package me.angelvallejo.misaes.parser.models;
 
 import android.util.Pair;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Kardex {
 
-    private HashMap< Integer, Pair< String , ArrayList<KardexClass>>> kardex;
+    private HashMap<Integer, Pair<String, ArrayList<KardexClass>>> kardex;
 
-    public Kardex(){
+    public Kardex() {
         kardex = new HashMap<>();
     }
 
-    public void addClass(int level, String levelName, KardexClass _class){
-        if ( !kardex.containsKey(level))
+    public void addClass(int level, String levelName, KardexClass _class) {
+        if (!kardex.containsKey(level))
             kardex.put(level, new Pair<String, ArrayList<KardexClass>>(levelName, new ArrayList<KardexClass>()) {
             });
 
@@ -21,13 +22,13 @@ public class Kardex {
         kardex.get(level).second.add(_class);
     }
 
-    public int size(){
+    public int size() {
         return kardex.size();
     }
 
-    public Pair<String, ArrayList<KardexClass>> getLevelClasses(int level){
+    public Pair<String, ArrayList<KardexClass>> getLevelClasses(int level) {
 
-        if ( !kardex.containsKey(level))
+        if (!kardex.containsKey(level))
             throw new IllegalArgumentException("Level " + level + " does not exist");
 
         return kardex.get(level);
