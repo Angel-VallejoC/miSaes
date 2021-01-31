@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    android:paddingTop="0dp"
+    tools:context=".login.LoginActivity">
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/progressBar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ipn_logo"
+        android:layout_width="@dimen/login_logo_size"
+        android:layout_height="@dimen/login_logo_size"
+        android:layout_marginTop="@dimen/margin_md"
+        android:contentDescription="@string/login_content_des_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_poli" />
+
+    <TextView
+        android:id="@+id/loginTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_md"
+        android:layout_marginTop="@dimen/margin_3xlg"
+        android:fontFamily="@font/product_sans_bold"
+        android:text="@string/login_title"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_lg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ipn_logo" />
+
+    <ScrollView
+        android:id="@+id/fields"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_2xlg"
+        android:layout_marginEnd="@dimen/margin_md"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/loginButtonLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/loginTitle"
+        app:layout_constraintTop_toBottomOf="@id/loginTitle">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/userLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans"
+                android:text="@string/login_user_title"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/text_md"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/userTextLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_sm"
+                android:layout_marginEnd="@dimen/margin_md"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/userLabel"
+                app:layout_constraintTop_toTopOf="@+id/userLabel">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans"
+                    android:inputType="number"
+                    android:textColorHighlight="@color/colorPrimary" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/passwordLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_lg"
+                android:fontFamily="@font/open_sans"
+                android:text="@string/login_password_title"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/text_md"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/userLabel"
+                app:layout_constraintTop_toBottomOf="@+id/userTextLayout"
+                tools:ignore="RtlSymmetry" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passwordTextLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_sm"
+                android:layout_marginEnd="@dimen/margin_md"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/userLabel"
+                app:layout_constraintTop_toTopOf="@id/passwordLabel"
+                app:passwordToggleContentDescription="@string/login_password_toggle_description"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/color_password_toggle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans"
+                    android:inputType="textNoSuggestions|textPassword"
+                    android:textColorHighlight="@color/colorPrimary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/captchaLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_lg"
+                android:fontFamily="@font/open_sans"
+                android:text="@string/login_captcha_title"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/text_md"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/userLabel"
+                app:layout_constraintTop_toBottomOf="@+id/passwordTextLayout"
+                tools:ignore="RtlSymmetry" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/captchaTextLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_sm"
+                android:layout_marginEnd="@dimen/margin_md"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/userLabel"
+                app:layout_constraintTop_toTopOf="@+id/captchaLabel">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/captcha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans"
+                    android:inputType="textCapCharacters"
+                    android:textColorHighlight="@color/colorPrimary" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/captchaImage"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="@dimen/margin_xlg"
+                android:layout_marginBottom="@dimen/margin_xlg"
+                android:contentDescription="@string/login_captcha_contentDescription"
+                app:layout_constraintEnd_toEndOf="@id/captchaTextLayout"
+                app:layout_constraintStart_toStartOf="@id/captchaTextLayout"
+                app:layout_constraintTop_toBottomOf="@+id/captchaTextLayout"
+                tools:srcCompat="@drawable/ic_launcher_background" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/loginButtonLine"
+        android:layout_width="fill_parent"
+        android:layout_height="0.8dp"
+        android:layout_marginBottom="@dimen/margin_sm"
+        android:background="@color/colorLines"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/loginButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_sm"
+        android:layout_marginBottom="@dimen/margin_sm"
+        android:background="@drawable/login_custom_button"
+        android:enabled="false"
+        android:fontFamily="@font/product_sans_medium"
+        android:minHeight="0dp"
+        android:paddingStart="@dimen/login_button_margin"
+        android:paddingEnd="@dimen/login_button_margin"
+        android:paddingTop="@dimen/margin_sm"
+        android:paddingBottom="@dimen/margin_sm"
+        android:text="@string/login_btn_title"
+        android:textAllCaps="false"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/text_md"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

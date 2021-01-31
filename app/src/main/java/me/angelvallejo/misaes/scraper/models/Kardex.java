@@ -1,4 +1,4 @@
-package me.angelvallejo.misaes.parser.models;
+package me.angelvallejo.misaes.scraper.models;
 
 import android.util.Pair;
 

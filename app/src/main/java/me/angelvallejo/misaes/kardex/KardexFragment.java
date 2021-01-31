@@ -1,4 +1,4 @@
-package me.angelvallejo.misaes;
+package me.angelvallejo.misaes.kardex;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,13 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import me.angelvallejo.misaes.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link AlumnoFragment#newInstance} factory method to
+ * Use the {@link KardexFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AlumnoFragment extends Fragment {
+public class KardexFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,7 +24,7 @@ public class AlumnoFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public AlumnoFragment() {
+    public KardexFragment() {
         // Required empty public constructor
     }
 
@@ -33,11 +34,11 @@ public class AlumnoFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment AlumnoFragment.
+     * @return A new instance of fragment KardexFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AlumnoFragment newInstance(String param1, String param2) {
-        AlumnoFragment fragment = new AlumnoFragment();
+    public static KardexFragment newInstance(String param1, String param2) {
+        KardexFragment fragment = new KardexFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -58,6 +59,6 @@ public class AlumnoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_alumno, container, false);
+        return inflater.inflate(R.layout.fragment_kardex, container, false);
     }
 }

@@ -1,4 +1,4 @@
-package me.angelvallejo.misaes.parser;
+package me.angelvallejo.misaes.scraper;
 
 import android.util.Pair;
 
@@ -14,12 +14,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import me.angelvallejo.misaes.parser.models.Kardex;
-import me.angelvallejo.misaes.parser.models.KardexClass;
-import me.angelvallejo.misaes.parser.models.ScheduleClass;
-import me.angelvallejo.misaes.parser.models.StudentInfo;
+import me.angelvallejo.misaes.scraper.models.Kardex;
+import me.angelvallejo.misaes.scraper.models.KardexClass;
+import me.angelvallejo.misaes.scraper.models.ScheduleClass;
+import me.angelvallejo.misaes.scraper.models.StudentInfo;
 
-public class SaesParser {
+public class SAEScraper {
 
     private static final String BASE_URL = "https://www.saes.upiicsa.ipn.mx/";
     private static final String USER_AGENT = "Chrome/81.0.4044.138";
@@ -27,16 +27,16 @@ public class SaesParser {
     private static Map<String, String> cookies;
     private static Document loginDocument;  // stores login page and home page once the user is logged in
 
-    private static SaesParser parser;
+    private static SAEScraper parser;
 
-    private SaesParser() {
+    private SAEScraper() {
         cookies = new HashMap<>();
         loginDocument = null;
     }
 
-    public static SaesParser getInstance() {
+    public static SAEScraper getInstance() {
         if (parser == null)
-            parser = new SaesParser();
+            parser = new SAEScraper();
 
         return parser;
     }
@@ -104,7 +104,7 @@ public class SaesParser {
             return new Pair<>(true, "");
         }
 
-        return new Pair<>(false, error.ownText());
+        return new Pair<>(false, error.text());
     }
 
     public boolean isLoggedIn() {

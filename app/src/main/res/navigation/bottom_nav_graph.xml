@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav_graph.xml"
+    app:startDestination="@id/gradesFragment">
+
+    <fragment
+        android:id="@+id/gradesFragment"
+        android:name="me.angelvallejo.misaes.grades.GradesFragment"
+        android:label="@string/grades_title"
+        tools:layout="@layout/fragment_grades" />
+    <fragment
+        android:id="@+id/kardexFragment"
+        android:name="me.angelvallejo.misaes.kardex.KardexFragment"
+        android:label="@string/kardex_title"
+        tools:layout="@layout/fragment_kardex" />
+    <fragment
+        android:id="@+id/scheduleFragment"
+        android:name="me.angelvallejo.misaes.schedule.ScheduleFragment"
+        android:label="@string/schedule_title"
+        tools:layout="@layout/fragment_schedule" />
+
+</navigation>
