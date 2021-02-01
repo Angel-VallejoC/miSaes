@@ -1,14 +1,14 @@
-package me.angelvallejo.misaes.login;
-
-import android.util.Pair;
+package me.angelvc.misaes.login;
 
 import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
 
-import me.angelvallejo.misaes.login.Contracts.LoginInteractor;
-import me.angelvallejo.misaes.login.Events.LoginEvent;
-import me.angelvallejo.misaes.scraper.SAEScraper;
+import me.angelvc.misaes.login.Contracts.LoginInteractor;
+import me.angelvc.misaes.login.Events.LoginEvent;
+import me.angelvc.saes.scraper.SAESchoolsUrls;
+import me.angelvc.saes.scraper.SAEScraper;
+import me.angelvc.saes.scraper.util.Pair;
 
 public class LoginInteractorImpl implements LoginInteractor {
 
@@ -16,8 +16,9 @@ public class LoginInteractorImpl implements LoginInteractor {
 
     private SAEScraper saes;
 
+    // TODO: change implementation to allow multiple schools
     public LoginInteractorImpl(){
-        saes = SAEScraper.getInstance();
+        saes = SAEScraper.getInstance(SAESchoolsUrls.School.UPIICSA);
     }
 
     @Override
@@ -29,11 +30,11 @@ public class LoginInteractorImpl implements LoginInteractor {
         new Thread(() -> {
             try {
                 Pair<Boolean, String > result = saes.login(user, password, captcha);
-                if (result.first){
+                if (result.getKey()){
                     post(LoginEvent.Type.LOGIN_SUCCESSFUL, "", null);
                 }
                 else {
-                    post(LoginEvent.Type.LOGIN_ERROR, result.second, null);
+                    post(LoginEvent.Type.LOGIN_ERROR, result.getValue(), null);
                 }
             } catch (IOException e) {
                 e.printStackTrace();

@@ -1,4 +1,4 @@
-package me.angelvallejo.misaes.kardex;
+package me.angelvc.misaes.kardex;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-import me.angelvallejo.misaes.R;
+import me.angelvc.misaes.R;
 
 /**
  * A simple {@link Fragment} subclass.

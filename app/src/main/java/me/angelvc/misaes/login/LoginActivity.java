@@ -1,20 +1,19 @@
-package me.angelvallejo.misaes.login;
+package me.angelvc.misaes.login;
 
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
-import me.angelvallejo.misaes.databinding.ActivityLoginBinding;
-import me.angelvallejo.misaes.home.HomeActivity;
-import me.angelvallejo.misaes.login.Contracts.LoginPresenter;
-import me.angelvallejo.misaes.login.Contracts.LoginView;
+import me.angelvc.misaes.databinding.ActivityLoginBinding;
+import me.angelvc.misaes.home.HomeActivity;
+import me.angelvc.misaes.login.Contracts.LoginPresenter;
+import me.angelvc.misaes.login.Contracts.LoginView;
 
 public class LoginActivity extends AppCompatActivity implements TextWatcher, LoginView {
     private static final String TAG = "LoginActivity";

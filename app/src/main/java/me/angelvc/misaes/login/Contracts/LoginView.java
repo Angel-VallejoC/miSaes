@@ -1,4 +1,4 @@
-package me.angelvallejo.misaes.login.Contracts;
+package me.angelvc.misaes.login.Contracts;
 
 public interface LoginView {
     void showCaptcha(byte[] captchaImage);

@@ -1,6 +1,6 @@
-package me.angelvallejo.misaes.login.Contracts;
+package me.angelvc.misaes.login.Contracts;
 
-import me.angelvallejo.misaes.login.Events.LoginEvent;
+import me.angelvc.misaes.login.Events.LoginEvent;
 
 public interface LoginPresenter {
     void onCreate();

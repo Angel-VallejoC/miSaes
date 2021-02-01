@@ -1,4 +1,4 @@
-package me.angelvallejo.misaes.login.Events;
+package me.angelvc.misaes.login.Events;
 
 public class LoginEvent {
 
