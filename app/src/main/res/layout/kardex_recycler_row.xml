@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/margin_sm"
+    android:layout_marginVertical="@dimen/margin_xsm"
+    android:padding="@dimen/margin_xsm"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:elevation="8dp"
+    app:cardCornerRadius="5dp" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/margin_sm"
+        android:paddingBottom="@dimen/margin_sm"
+        >
+
+        <TextView
+            android:id="@+id/subject"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_md"
+            android:textColor="@android:color/black"
+            android:textAllCaps="false"
+            android:textSize="@dimen/text_md_1"
+            app:layout_constraintEnd_toStartOf="@id/grade"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Calidad y normalización de software e int del soft" />
+
+        <TextView
+            android:id="@+id/subjectId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_sm_2"
+            app:layout_constraintStart_toStartOf="@id/subject"
+            app:layout_constraintTop_toBottomOf="@id/subject"
+            tools:text="N103" />
+
+        <TextView
+            android:id="@+id/term"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_sm"
+            android:textColor="@color/colorTextLight"
+            android:textSize="@dimen/text_sm_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/subjectId"
+            app:layout_constraintTop_toBottomOf="@id/subjectId"
+            tools:text="17/1" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_md"
+            android:textColor="@color/colorTextLight"
+            android:textSize="@dimen/text_sm_2"
+            app:layout_constraintBottom_toBottomOf="@id/term"
+            app:layout_constraintStart_toEndOf="@id/term"
+            app:layout_constraintTop_toTopOf="@id/term"
+            tools:text="Dic 21 2016" />
+
+
+        <TextView
+            android:id="@+id/grade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_md"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/text_xlg_2"
+            app:layout_constraintBottom_toTopOf="@id/evalType"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="10" />
+
+        <TextView
+            android:id="@+id/evalType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/text_sm_1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/grade"
+            app:layout_constraintStart_toStartOf="@id/grade"
+            app:layout_constraintTop_toBottomOf="@id/grade"
+            tools:text="ORD" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
