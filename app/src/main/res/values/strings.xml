@@ -14,13 +14,12 @@
     <string name="login_captcha_title">Captcha</string>
 
     <string name="kardex_title">Kardex</string>
-
+    <string name="kardex_noData_title">No hay datos para mostrar</string>
 
     <string name="grades_title">Calificaciones</string>
 
 
     <string name="schedule_title">Horario</string>
     <string name="login_password_toggle_description">Mostrar contraseña</string>
-
 
 </resources>

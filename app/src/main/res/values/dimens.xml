@@ -9,8 +9,21 @@
     <dimen name="margin_2xlg">40dp</dimen>
     <dimen name="margin_3xlg">48dp</dimen>
 
+    <dimen name="text_sm">8sp</dimen>
+    <dimen name="text_sm_1">10sp</dimen>
+    <dimen name="text_sm_2">12sp</dimen>
+
     <dimen name="text_md">16sp</dimen>
+    <dimen name="text_md_1">18sp</dimen>
+    <dimen name="text_md_2">18sp</dimen>
+
     <dimen name="text_lg">24sp</dimen>
+    <dimen name="text_lg_1">26sp</dimen>
+    <dimen name="text_lg_2">28sp</dimen>
+
+    <dimen name="text_xlg">32sp</dimen>
+    <dimen name="text_xlg_1">34sp</dimen>
+    <dimen name="text_xlg_2">36sp</dimen>
 
 
     <dimen name="login_button_margin">25dp</dimen>
