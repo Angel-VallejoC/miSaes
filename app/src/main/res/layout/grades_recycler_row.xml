@@ -74,7 +74,7 @@
             app:layout_constraintTop_toTopOf="@id/line_division"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/groupId"
-            tools:text="@string/grades_first_title" />
+            android:text="@string/grades_first_title" />
 
         <TextView
             android:id="@+id/firstGrade"
@@ -96,7 +96,7 @@
             app:layout_constraintStart_toEndOf="@+id/firstGradeTitle"
             app:layout_constraintEnd_toStartOf="@+id/thirdGradeTitle"
             app:layout_constraintHorizontal_bias="1.0"
-            tools:text="@string/grades_second_title" />
+            android:text="@string/grades_second_title" />
 
         <TextView
             android:id="@+id/secondGrade"
@@ -119,7 +119,7 @@
             app:layout_constraintStart_toEndOf="@+id/secondGradeTitle"
             app:layout_constraintEnd_toStartOf="@+id/extraGrade"
             app:layout_constraintHorizontal_bias="1.0"
-            tools:text="@string/grades_third_title" />
+            android:text="@string/grades_third_title" />
 
         <TextView
             android:id="@+id/thirdGrade"
@@ -142,7 +142,7 @@
             app:layout_constraintEnd_toStartOf="@+id/extraGrade"
             app:layout_constraintStart_toEndOf="@+id/thirdGradeTitle"
             app:layout_constraintHorizontal_bias="1.0"
-            tools:text="@string/grades_extra_title"/>
+            android:text="@string/grades_extra_title"/>
 
         <TextView
             android:id="@+id/extraGrade"
