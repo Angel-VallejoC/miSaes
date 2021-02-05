@@ -55,7 +55,7 @@ public class KardexAdapter extends RecyclerView.Adapter<KardexAdapter.ViewHolder
         holder.binding.date.setText(kardexClass.getFecha());
         holder.binding.evalType.setText( kardexClass.getFormaEvaluacion());
         holder.binding.finalGrade.setText( kardexClass.getCalificacion());
-        holder.binding.subject.setText( kardexClass.getMateria().toLowerCase() );
+        holder.binding.subject.setText( kardexClass.getMateria() );
         holder.binding.groupId.setText( kardexClass.getClave());
         holder.binding.term.setText( kardexClass.getPeriodo());
     }
