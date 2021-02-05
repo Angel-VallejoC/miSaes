@@ -30,4 +30,9 @@
 
     <string name="schedule_title">Horario</string>
 
+
+    <string name="me_title">Yo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
