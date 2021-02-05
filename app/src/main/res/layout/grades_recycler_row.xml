@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/margin_sm"
+    android:layout_marginVertical="@dimen/margin_xsm"
+    android:padding="@dimen/margin_xsm"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:elevation="8dp"
+    app:cardCornerRadius="5dp" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/margin_sm"
+        android:paddingBottom="@dimen/margin_sm">
+
+        <LinearLayout
+            android:id="@+id/line_division"
+            android:layout_width="0dp"
+            android:layout_height="0.8dp"
+            android:layout_marginTop="@dimen/margin_sm"
+            android:background="#E8E8E8"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@id/subject"
+            app:layout_constraintEnd_toEndOf="@id/finalGrade"
+            app:layout_constraintTop_toBottomOf="@id/groupId" />
+
+        <TextView
+            android:id="@+id/subject"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_md"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_md_1"
+            app:layout_constraintEnd_toStartOf="@id/finalGrade"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Calidad y normalización de software e int del soft" />
+
+        <TextView
+            android:id="@+id/groupId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_sm_2"
+            app:layout_constraintStart_toStartOf="@id/subject"
+            app:layout_constraintTop_toBottomOf="@id/subject"
+            tools:text="N103" />
+
+        <TextView
+            android:id="@+id/finalGrade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_md"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/text_xlg_2"
+            app:layout_constraintBottom_toTopOf="@id/line_division"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="10" />
+
+
+        <TextView
+            android:id="@+id/firstGradeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_sm"
+            app:layout_constraintTop_toTopOf="@id/line_division"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/groupId"
+            tools:text="@string/grades_first_title" />
+
+        <TextView
+            android:id="@+id/firstGrade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_sm"
+            android:textColor="@color/colorText"
+            app:layout_constraintTop_toTopOf="@id/firstGradeTitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/firstGradeTitle"
+            tools:text="10"/>
+
+        <TextView
+            android:id="@+id/secondGradeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/firstGradeTitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/firstGradeTitle"
+            app:layout_constraintEnd_toStartOf="@+id/thirdGradeTitle"
+            app:layout_constraintHorizontal_bias="1.0"
+            tools:text="@string/grades_second_title" />
+
+        <TextView
+            android:id="@+id/secondGrade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_sm"
+            android:textColor="@color/colorText"
+            app:layout_constraintTop_toTopOf="@id/firstGradeTitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/secondGradeTitle"
+            tools:text="10"/>
+
+
+        <TextView
+            android:id="@+id/thirdGradeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/firstGradeTitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/secondGradeTitle"
+            app:layout_constraintEnd_toStartOf="@+id/extraGrade"
+            app:layout_constraintHorizontal_bias="1.0"
+            tools:text="@string/grades_third_title" />
+
+        <TextView
+            android:id="@+id/thirdGrade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_sm"
+            android:textColor="@color/colorText"
+            app:layout_constraintTop_toTopOf="@id/firstGradeTitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/thirdGradeTitle"
+            tools:text="10"/>
+
+        <TextView
+            android:id="@+id/extraGradeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_sm"
+            app:layout_constraintTop_toTopOf="@id/firstGradeTitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/extraGrade"
+            app:layout_constraintStart_toEndOf="@+id/thirdGradeTitle"
+            app:layout_constraintHorizontal_bias="1.0"
+            tools:text="@string/grades_extra_title"/>
+
+        <TextView
+            android:id="@+id/extraGrade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorText"
+            app:layout_constraintTop_toTopOf="@id/firstGradeTitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/finalGrade"
+            tools:text="10" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
