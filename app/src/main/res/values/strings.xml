@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">miSAES</string>
 
+    <string name="common_no_data_contentDescription">No data</string>
+
     <string name="login_title">Iniciar sesión en SAES</string>
     <string name="login_user_title">Usuario</string>
     <string name="login_password_title">Contraseña</string>
+    <string name="login_password_toggle_description">Mostrar contraseña</string>
     <string name="login_btn_title">Inicia sesión</string>
     <string name="login_content_des_logo">Logo IPN</string>
     <string name="login_error_message">Hubo un error al iniciar sesión. Intenta más tarde.</string>
@@ -15,11 +18,16 @@
 
     <string name="kardex_title">Kardex</string>
     <string name="kardex_noData_title">No hay datos para mostrar</string>
+    <string name="kardex_error">Error al obtener kardex</string>
 
     <string name="grades_title">Calificaciones</string>
+    <string name="grades_first_title">1°:</string>
+    <string name="grades_second_title">2°:</string>
+    <string name="grades_third_title">3°:</string>
+    <string name="grades_extra_title">Ext:</string>
+    <string name="grades_error">Error al obtener calificaciones</string>
 
 
     <string name="schedule_title">Horario</string>
-    <string name="login_password_toggle_description">Mostrar contraseña</string>
 
 </resources>
