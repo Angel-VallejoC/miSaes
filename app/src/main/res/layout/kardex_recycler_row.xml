@@ -28,14 +28,14 @@
             android:textColor="@android:color/black"
             android:textAllCaps="false"
             android:textSize="@dimen/text_md_1"
-            app:layout_constraintEnd_toStartOf="@id/grade"
+            app:layout_constraintEnd_toStartOf="@id/finalGrade"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Calidad y normalización de software e int del soft" />
 
         <TextView
-            android:id="@+id/subjectId"
+            android:id="@+id/groupId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_sm_2"
@@ -51,8 +51,8 @@
             android:textColor="@color/colorTextLight"
             android:textSize="@dimen/text_sm_2"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/subjectId"
-            app:layout_constraintTop_toBottomOf="@id/subjectId"
+            app:layout_constraintStart_toStartOf="@id/groupId"
+            app:layout_constraintTop_toBottomOf="@id/groupId"
             tools:text="17/1" />
 
         <TextView
@@ -69,7 +69,7 @@
 
 
         <TextView
-            android:id="@+id/grade"
+            android:id="@+id/finalGrade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_md"
@@ -87,9 +87,9 @@
             android:textColor="@color/colorText"
             android:textSize="@dimen/text_sm_1"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/grade"
-            app:layout_constraintStart_toStartOf="@id/grade"
-            app:layout_constraintTop_toBottomOf="@id/grade"
+            app:layout_constraintEnd_toEndOf="@id/finalGrade"
+            app:layout_constraintStart_toStartOf="@id/finalGrade"
+            app:layout_constraintTop_toBottomOf="@id/finalGrade"
             tools:text="ORD" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

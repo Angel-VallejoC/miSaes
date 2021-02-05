@@ -13,14 +13,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import me.angelvc.misaes.R;
 import me.angelvc.misaes.databinding.FragmentKardexBinding;
-import me.angelvc.misaes.kardex.contracts.KardexPresenter;
-import me.angelvc.misaes.kardex.contracts.KardexView;
+import me.angelvc.misaes.kardex.contracts.KardexContracts;
 import me.angelvc.saes.scraper.models.Kardex;
 
 
-public class KardexFragment extends Fragment implements KardexView {
+public class KardexFragment extends Fragment implements KardexContracts.View {
 
-    private KardexPresenter presenter;
+    private KardexContracts.Presenter presenter;
     private FragmentKardexBinding binding;
 
     public KardexFragment() {
@@ -47,13 +46,13 @@ public class KardexFragment extends Fragment implements KardexView {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         presenter = new KardexPresenterImpl(this);
-        presenter.onAttach();
+        presenter.load();
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        presenter.onDetach();
+        presenter.stop();
     }
 
     // --------------------- VIEW METHODS ---------------------
@@ -81,6 +80,8 @@ public class KardexFragment extends Fragment implements KardexView {
 
     @Override
     public void showError(){
-        Snackbar.make(binding.getRoot(),"Error al obtener kardex", Snackbar.LENGTH_LONG).show();
+        Snackbar.make(binding.getRoot(), R.string.kardex_error, Snackbar.LENGTH_LONG)
+                .setAnchorView(R.id.bottomNavigationView)
+                .show();
     }
 }

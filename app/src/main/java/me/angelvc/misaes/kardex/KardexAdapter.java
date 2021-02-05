@@ -3,9 +3,7 @@ package me.angelvc.misaes.kardex;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import java.util.ArrayList;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import me.angelvc.misaes.R;
@@ -56,9 +54,9 @@ public class KardexAdapter extends RecyclerView.Adapter<KardexAdapter.ViewHolder
 
         holder.binding.date.setText(kardexClass.getFecha());
         holder.binding.evalType.setText( kardexClass.getFormaEvaluacion());
-        holder.binding.grade.setText( kardexClass.getCalificacion());
+        holder.binding.finalGrade.setText( kardexClass.getCalificacion());
         holder.binding.subject.setText( kardexClass.getMateria().toLowerCase() );
-        holder.binding.subjectId.setText( kardexClass.getClave());
+        holder.binding.groupId.setText( kardexClass.getClave());
         holder.binding.term.setText( kardexClass.getPeriodo());
     }
 

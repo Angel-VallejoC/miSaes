@@ -1,16 +1,14 @@
 package me.angelvc.misaes.kardex;
 
 import org.greenrobot.eventbus.EventBus;
-
 import java.io.IOException;
-
-import me.angelvc.misaes.kardex.contracts.KardexInteractor;
+import me.angelvc.misaes.kardex.contracts.KardexContracts;
 import me.angelvc.misaes.kardex.events.KardexEvent;
 import me.angelvc.saes.scraper.SAESchoolsUrls;
 import me.angelvc.saes.scraper.SAEScraper;
 import me.angelvc.saes.scraper.models.Kardex;
 
-public class KardexInteractorImpl implements KardexInteractor {
+public class KardexInteractorImpl implements KardexContracts.Interactor {
     @Override
     public void getKardexGrades() {
         new Thread(() -> {
