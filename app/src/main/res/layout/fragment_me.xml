@@ -1,13 +1,154 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="me.angelvc.misaes.me.MeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="visible"
+        android:elevation="2dp"
+        />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/schoolName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_xlg"
+        android:layout_marginTop="@dimen/margin_md"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_md_2"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="UNIDAD PROFESIONAL INTERDISCIPLINARIA DE INGENIERIA Y CIENCIAS SOCIALES Y ADMINISTRATIVAS" />
+
+    <TextView
+        android:id="@+id/studentTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_2xlg"
+        android:text="@string/me_student_title"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@id/schoolName"
+        app:layout_constraintTop_toBottomOf="@id/schoolName" />
+
+    <TextView
+        android:id="@+id/student"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8xlg"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/text_md_1"
+        android:visibility="invisible"
+        app:layout_constraintBaseline_toBaselineOf="@+id/studentTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/studentTitle"
+        tools:text="ANGEL VALLEJO CHAPARRO" />
+
+    <TextView
+        android:id="@+id/studentIdTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_4xlg"
+        android:text="@string/me_studentId_title"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@id/schoolName"
+        app:layout_constraintTop_toBottomOf="@id/studentTitle" />
+
+    <TextView
+        android:id="@+id/studentId"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8xlg"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/text_md_1"
+        android:visibility="invisible"
+        app:layout_constraintBaseline_toBaselineOf="@+id/studentIdTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/studentTitle"
+        tools:text="2016031346" />
+
+    <TextView
+        android:id="@+id/degreeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_4xlg"
+        android:text="@string/me_degree_title"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@id/schoolName"
+        app:layout_constraintTop_toBottomOf="@id/studentIdTitle" />
+
+    <TextView
+        android:id="@+id/degree"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8xlg"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/text_md_1"
+        android:visibility="invisible"
+        app:layout_constraintBaseline_toBaselineOf="@+id/degreeTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/studentTitle"
+        tools:text="INGENIERIA EN INFORMÁTICA" />
+
+    <TextView
+        android:id="@+id/planTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_4xlg"
+        android:text="@string/me_plan_title"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@id/schoolName"
+        app:layout_constraintTop_toBottomOf="@id/degreeTitle" />
+
+    <TextView
+        android:id="@+id/plan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8xlg"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/text_md_1"
+        android:visibility="invisible"
+        app:layout_constraintBaseline_toBaselineOf="@+id/planTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/studentTitle"
+        tools:text="02" />
+
+    <TextView
+        android:id="@+id/avgTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_4xlg"
+        android:text="@string/me_average_title"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@id/schoolName"
+        app:layout_constraintTop_toBottomOf="@id/planTitle" />
+
+    <TextView
+        android:id="@+id/avg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8xlg"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/text_md_1"
+        android:visibility="invisible"
+        app:layout_constraintBaseline_toBaselineOf="@+id/avgTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/studentTitle"
+        tools:text="8.90" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,64 +1,95 @@
 package me.angelvc.misaes.me;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import me.angelvc.misaes.R;
+import me.angelvc.misaes.databinding.FragmentMeBinding;
+import me.angelvc.misaes.me.contracts.MeContracts;
+import me.angelvc.saes.scraper.models.StudentInfo;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class MeFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class MeFragment extends Fragment implements MeContracts.View {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    MeContracts.Presenter presenter;
+    FragmentMeBinding binding;
 
     public MeFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MeFragment newInstance(String param1, String param2) {
-        MeFragment fragment = new MeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_me, container, false);
+        View view = inflater.inflate(R.layout.fragment_me, container, false);
+        binding = FragmentMeBinding.bind(view);
+        return view;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        presenter = new MePresenterImpl(this);
+        presenter.load();
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        presenter.stop();
+    }
+
+    // ------------------------------------ VIEW METHODS ------------------------------------
+    @Override
+    public void showInfo(StudentInfo info) {
+        binding.schoolName.setText(info.getUnidad());
+        binding.student.setText(info.getNombre());
+        binding.studentId.setText(info.getBoleta());
+        binding.degree.setText(info.getCarrera());
+        binding.plan.setText(info.getPlan());
+        binding.avg.setText(info.getPromedio());
+
+        binding.schoolName.setVisibility(View.VISIBLE);
+        binding.studentTitle.setVisibility(View.VISIBLE);
+        binding.student.setVisibility(View.VISIBLE);
+        binding.studentIdTitle.setVisibility(View.VISIBLE);
+        binding.studentId.setVisibility(View.VISIBLE);
+        binding.degreeTitle.setVisibility(View.VISIBLE);
+        binding.degree.setVisibility(View.VISIBLE);
+        binding.planTitle.setVisibility(View.VISIBLE);
+        binding.plan.setVisibility(View.VISIBLE);
+        binding.avgTitle.setVisibility(View.VISIBLE);
+        binding.avg.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void showProgress() {
+        binding.progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgress() {
+        binding.progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showError() {
+        Snackbar.make(binding.getRoot(), R.string.me_error, Snackbar.LENGTH_LONG)
+                .setAnchorView(R.id.bottomNavigationView)
+                .show();
     }
 }

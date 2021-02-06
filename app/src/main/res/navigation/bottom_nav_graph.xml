@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/meFragment"
         android:name="me.angelvc.misaes.me.MeFragment"
-        android:label="fragment_me"
+        android:label="@string/me_fragment_tile"
         tools:layout="@layout/fragment_me" />
 
     <fragment
