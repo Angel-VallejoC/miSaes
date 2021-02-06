@@ -3,19 +3,19 @@
 
     <item android:id="@+id/meFragment"
         android:title="@string/me_title"
-        android:icon="@drawable/ic_home_me" />
+        android:icon="@drawable/home_me_selector" />
 
     <item android:id="@+id/kardexFragment"
         android:title="@string/kardex_title"
-        android:icon="@drawable/ic_home_kardex"/>
+        android:icon="@drawable/home_kardex_selector"/>
 
     <item android:id="@+id/gradesFragment"
         android:title="@string/grades_title"
-        android:icon="@drawable/ic_home_grades"/>
+        android:icon="@drawable/home_grades_selector"/>
 
     <item android:id="@+id/scheduleFragment"
         android:title="@string/schedule_title"
-        android:icon="@drawable/ic_home_schedule"/>
+        android:icon="@drawable/home_schedule_selector"/>
 
 
 </menu>
