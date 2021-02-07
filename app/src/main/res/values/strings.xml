@@ -3,6 +3,8 @@
 
     <string name="common_no_data_contentDescription">No data</string>
 
+    <string name="home_menu_logout">Cerrar sesión</string>
+
     <string name="login_title">Iniciar sesión en SAES</string>
     <string name="login_user_title">Usuario</string>
     <string name="login_password_title">Contraseña</string>
@@ -39,5 +41,6 @@
     <string name="me_student_title">Alumno:</string>
     <string name="me_error">Error al obtener información del alumno</string>
     <string name="me_fragment_tile">Alumno</string>
+
 
 </resources>
