@@ -19,7 +19,7 @@ public class GradesInteractorImpl implements GradesContracts.Interactor {
             GradesEvent event;
             ArrayList<GradeEntry> grades = new ArrayList<>();
             try {
-                grades = saes.getGradesTest();
+                grades = saes.getGrades();
                 if (grades.size() == 0){
                     event = new GradesEvent(GradesEvent.Type.GRADES_EMPTY, grades);
                 }
