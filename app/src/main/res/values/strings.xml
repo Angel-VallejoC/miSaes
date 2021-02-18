@@ -31,6 +31,14 @@
 
 
     <string name="schedule_title">Horario</string>
+    <string name="schedule_error">Error al obtener horario</string>
+    <string name="schedule_building_title">Edificio:</string>
+    <string name="schedule_classroom_title">Salón:</string>
+    <string name="schedule_monday_title">L</string>
+    <string name="schedule_tuesday_title">Ma</string>
+    <string name="schedule_wednesday_title">Mi</string>
+    <string name="schedule_thursday_title">J</string>
+    <string name="schedule_friday_title">V</string>
 
 
     <string name="me_title">Alumno</string>

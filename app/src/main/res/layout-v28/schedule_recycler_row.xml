@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/margin_sm"
+    android:layout_marginVertical="@dimen/margin_xsm"
+    android:padding="@dimen/margin_xsm"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:elevation="8dp"
+    app:cardCornerRadius="5dp" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/margin_sm"
+        android:paddingBottom="@dimen/margin_sm">
+
+
+        <TextView
+            android:id="@+id/subject"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_md"
+            android:layout_marginEnd="@dimen/margin_md"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_md_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Calidad y normalización de software e int del software" />
+
+        <TextView
+            android:id="@+id/professor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:textSize="@dimen/text_sm_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@id/subject"
+            app:layout_constraintTop_toBottomOf="@id/subject"
+            tools:text="Rodriguez Coria Sigifredo" />
+
+        <TextView
+            android:id="@+id/groupId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_sm_2"
+            app:layout_constraintStart_toStartOf="@id/subject"
+            app:layout_constraintTop_toBottomOf="@id/professor"
+            tools:text="N103" />
+
+        <TextView
+            android:id="@+id/buildingTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_sm_2"
+            android:textColor="@color/colorText"
+            android:layout_marginTop="@dimen/margin_sm"
+            app:layout_constraintStart_toStartOf="@id/subject"
+            app:layout_constraintTop_toBottomOf="@id/groupId"
+            android:text="@string/schedule_building_title" />
+
+        <TextView
+            android:id="@+id/building"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_sm_2"
+            android:textColor="@color/colorTextLight"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/margin_md"
+            app:layout_constraintStart_toEndOf="@id/buildingTitle"
+            app:layout_constraintTop_toTopOf="@id/buildingTitle"
+            tools:text="Básicas" />
+
+        <TextView
+            android:id="@+id/classroomTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_sm_2"
+            android:textColor="@color/colorText"
+            android:layout_marginTop="@dimen/margin_sm"
+            app:layout_constraintStart_toStartOf="@id/subject"
+            app:layout_constraintTop_toBottomOf="@id/buildingTitle"
+            android:text="@string/schedule_classroom_title" />
+
+        <TextView
+            android:id="@+id/classroom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_sm_2"
+            android:textColor="@color/colorTextLight"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/building"
+            app:layout_constraintTop_toTopOf="@id/classroomTitle"
+            tools:text="103/102/301" />
+
+        <LinearLayout
+            android:id="@+id/line_division"
+            android:layout_width="0dp"
+            android:layout_height="0.8dp"
+            android:layout_marginTop="@dimen/margin_sm"
+            android:background="#E8E8E8"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@id/subject"
+            app:layout_constraintStart_toStartOf="@id/subject"
+            app:layout_constraintTop_toBottomOf="@id/classroomTitle" />
+
+        <TextView
+            android:id="@+id/mondayTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/schedule_monday_title"
+            android:textColor="@color/colorText"
+            android:layout_marginTop="@dimen/margin_sm"
+            app:layout_constraintEnd_toStartOf="@+id/tuesdayTitle"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line_division" />
+
+        <TextView
+            android:id="@+id/monday"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/text_md"
+            android:textAlignment="center"
+            android:lineHeight="@dimen/text_sm_2"
+            app:layout_constraintEnd_toEndOf="@id/mondayTitle"
+            app:layout_constraintStart_toStartOf="@id/mondayTitle"
+            app:layout_constraintTop_toBottomOf="@id/mondayTitle"
+            tools:text="14:00 - 16:30" />
+
+        <TextView
+            android:id="@+id/tuesdayTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/schedule_tuesday_title"
+            android:textColor="@color/colorText"
+            android:layout_marginTop="@dimen/margin_sm"
+            android:layout_marginStart="@dimen/margin_xlg"
+            app:layout_constraintEnd_toStartOf="@+id/wednesdayTitle"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/mondayTitle"
+            app:layout_constraintTop_toBottomOf="@id/line_division" />
+
+        <TextView
+            android:id="@+id/tuesday"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/text_md"
+            android:textAlignment="center"
+            android:lineHeight="@dimen/text_sm_2"
+            app:layout_constraintEnd_toEndOf="@id/tuesdayTitle"
+            app:layout_constraintStart_toStartOf="@id/tuesdayTitle"
+            app:layout_constraintTop_toBottomOf="@id/tuesdayTitle"
+            tools:text="14:00 - 16:30" />
+
+        <TextView
+            android:id="@+id/wednesdayTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/schedule_wednesday_title"
+            android:textColor="@color/colorText"
+            android:layout_marginTop="@dimen/margin_sm"
+            android:layout_marginStart="@dimen/margin_xlg"
+            app:layout_constraintEnd_toStartOf="@+id/thursdayTitle"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tuesdayTitle"
+            app:layout_constraintTop_toBottomOf="@id/line_division" />
+
+        <TextView
+            android:id="@+id/wednesday"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/text_md"
+            android:textAlignment="center"
+            android:lineHeight="@dimen/text_sm_2"
+            app:layout_constraintEnd_toEndOf="@id/wednesdayTitle"
+            app:layout_constraintStart_toStartOf="@id/wednesdayTitle"
+            app:layout_constraintTop_toBottomOf="@id/wednesdayTitle"
+            tools:text="14:00 - 16:30" />
+
+        <TextView
+            android:id="@+id/thursdayTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/schedule_thursday_title"
+            android:textColor="@color/colorText"
+            android:layout_marginTop="@dimen/margin_sm"
+            android:layout_marginStart="@dimen/margin_xlg"
+            app:layout_constraintEnd_toStartOf="@+id/fridayTitle"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/wednesdayTitle"
+            app:layout_constraintTop_toBottomOf="@id/line_division" />
+
+        <TextView
+            android:id="@+id/thursday"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/text_md"
+            android:textAlignment="center"
+            android:lineHeight="@dimen/text_sm_2"
+            app:layout_constraintEnd_toEndOf="@id/thursdayTitle"
+            app:layout_constraintStart_toStartOf="@id/thursdayTitle"
+            app:layout_constraintTop_toBottomOf="@id/thursdayTitle"
+            tools:text="14:00 - 16:30" />
+
+        <TextView
+            android:id="@+id/fridayTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/schedule_friday_title"
+            android:textColor="@color/colorText"
+            android:layout_marginTop="@dimen/margin_sm"
+            android:layout_marginStart="@dimen/margin_xlg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/thursdayTitle"
+            app:layout_constraintTop_toBottomOf="@id/line_division" />
+
+        <TextView
+            android:id="@+id/friday"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/text_md"
+            android:textAlignment="center"
+            android:lineHeight="@dimen/text_sm_2"
+            app:layout_constraintEnd_toEndOf="@id/fridayTitle"
+            app:layout_constraintStart_toStartOf="@id/fridayTitle"
+            app:layout_constraintTop_toBottomOf="@id/fridayTitle"
+            tools:text="14:00 - 16:30" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
