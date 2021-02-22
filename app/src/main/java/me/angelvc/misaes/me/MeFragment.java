@@ -56,12 +56,12 @@ public class MeFragment extends Fragment implements MeContracts.View {
     // ------------------------------------ VIEW METHODS ------------------------------------
     @Override
     public void showInfo(StudentInfo info) {
-        binding.schoolName.setText(info.getUnidad());
-        binding.student.setText(info.getNombre());
-        binding.studentId.setText(info.getBoleta());
-        binding.degree.setText(info.getCarrera());
+        binding.schoolName.setText(info.getCampus());
+        binding.student.setText(info.getName());
+        binding.studentId.setText(info.getId());
+        binding.degree.setText(info.getDegreeName());
         binding.plan.setText(info.getPlan());
-        binding.avg.setText(info.getPromedio());
+        binding.avg.setText(info.getAverage());
 
         binding.schoolName.setVisibility(View.VISIBLE);
         binding.studentTitle.setVisibility(View.VISIBLE);

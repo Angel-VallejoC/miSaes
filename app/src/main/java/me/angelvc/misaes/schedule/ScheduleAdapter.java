@@ -33,13 +33,13 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ScheduleClass scheduleClass = schedule.get(position);
-        String[] days = scheduleClass.getHorario();
+        String[] days = scheduleClass.getSchedule();
         holder.setupScheduleCard(
-                scheduleClass.getMateria(),
-                scheduleClass.getGrupo(),
-                scheduleClass.getProfesor(),
-                scheduleClass.getEdificio(),
-                scheduleClass.getSalon(),
+                scheduleClass.getName(),
+                scheduleClass.getCode(),
+                scheduleClass.getProfessor(),
+                scheduleClass.getBuilding(),
+                scheduleClass.getClassroom(),
                 days[0],
                 days[1],
                 days[2],

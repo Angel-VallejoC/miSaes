@@ -3,14 +3,13 @@ package me.angelvc.misaes.kardex;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import java.util.ArrayList;
 import me.angelvc.misaes.R;
 import me.angelvc.misaes.databinding.KardexRecyclerRowBinding;
 import me.angelvc.saes.scraper.models.Kardex;
 import me.angelvc.saes.scraper.models.KardexClass;
-import me.angelvc.saes.scraper.util.Pair;
 
 public class KardexAdapter extends RecyclerView.Adapter<KardexAdapter.ViewHolder> {
 
@@ -20,8 +19,8 @@ public class KardexAdapter extends RecyclerView.Adapter<KardexAdapter.ViewHolder
         kardexClasses = new ArrayList<>();
         kardex.getLevels();
         for (Integer level: kardex.getLevels()){
-            Pair<String, ArrayList<KardexClass>> entry = kardex.getLevelClasses(level);
-            kardexClasses.addAll(entry.getValue());
+            ArrayList<KardexClass> entry = kardex.getLevelClasses(level);
+            kardexClasses.addAll(entry);
         }
     }
 
@@ -33,9 +32,10 @@ public class KardexAdapter extends RecyclerView.Adapter<KardexAdapter.ViewHolder
         kardexClasses = new ArrayList<>();
         kardex.getLevels();
         for (Integer level: kardex.getLevels()){
-            Pair<String, ArrayList<KardexClass>> entry = kardex.getLevelClasses(level);
-            kardexClasses.addAll(entry.getValue());
+            ArrayList<KardexClass> entry = kardex.getLevelClasses(level);
+            kardexClasses.addAll(entry);
         }
+        notifyDataSetChanged();
     }
 
 
@@ -52,12 +52,12 @@ public class KardexAdapter extends RecyclerView.Adapter<KardexAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         KardexClass kardexClass = kardexClasses.get(position);
 
-        holder.binding.date.setText(kardexClass.getFecha());
-        holder.binding.evalType.setText( kardexClass.getFormaEvaluacion());
-        holder.binding.finalGrade.setText( kardexClass.getCalificacion());
-        holder.binding.subject.setText( kardexClass.getMateria() );
-        holder.binding.groupId.setText( kardexClass.getClave());
-        holder.binding.term.setText( kardexClass.getPeriodo());
+        holder.binding.date.setText(kardexClass.getDate());
+        holder.binding.evalType.setText( kardexClass.getEvaluationType());
+        holder.binding.finalGrade.setText( kardexClass.getGrade());
+        holder.binding.subject.setText( kardexClass.getName() );
+        holder.binding.groupId.setText( kardexClass.getCode());
+        holder.binding.term.setText( kardexClass.getTerm());
     }
 
     @Override
