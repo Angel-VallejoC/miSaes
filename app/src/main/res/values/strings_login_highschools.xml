@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="highschools">
+        <item>CET 1</item>
+        <item>CECyT 1</item>
+        <item>CECyT 2</item>
+        <item>CECyT 3</item>
+        <item>CECyT 4</item>
+        <item>CECyT 5</item>
+        <item>CECyT 6</item>
+        <item>CECyT 7</item>
+        <item>CECyT 8</item>
+        <item>CECyT 9</item>
+        <item>CECyT 10</item>
+        <item>CECyT 11</item>
+        <item>CECyT 12</item>
+        <item>CECyT 13</item>
+        <item>CECyT 14</item>
+        <item>CECyT 15</item>
+        <item>CECyT 16</item>
+        <item>CECyT 17</item>
+        <item>CECyT 18</item>
+        <item>CECyT 19</item>
+    </array>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_nav_graph.xml"
+    app:startDestination="@id/selectSchoolFragment">
+    <fragment
+        android:id="@+id/enterCredentialsFragments"
+        android:name="me.angelvc.misaes.login.fragments.EnterCredentialsFragments"
+        android:label="EnterCredentialsFragments" >
+        <action
+            android:id="@+id/action_enterCredentialsFragments_to_selectSchoolFragment"
+            app:destination="@id/selectSchoolFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectSchoolFragment"
+        android:name="me.angelvc.misaes.login.fragments.SelectSchoolFragment"
+        android:label="SelectSchoolFragment" >
+        <action
+            android:id="@+id/action_selectSchoolFragment_to_enterCredentialsFragments"
+            app:destination="@id/enterCredentialsFragments"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+    </fragment>
+</navigation>

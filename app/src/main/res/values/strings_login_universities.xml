@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="universities">
+        <item>CICS Milpa Alta</item>
+        <item>CICS Santo Tomás</item>
+        <item>ENBA</item>
+        <item>ENCB</item>
+        <item>ENMH</item>
+        <item>ESCA Santo Tomás</item>
+        <item>ESCA Tepepan</item>
+        <item>ESCA Tepepan</item>
+        <item>ESCOM</item>
+        <item>ESE</item>
+        <item>ESEO</item>
+        <item>ESFM</item>
+        <item>ESIA Tecamachalco</item>
+        <item>ESIA Ticomán</item>
+        <item>ESIA Zacatenco</item>
+        <item>ESIME Azcapotzalco</item>
+        <item>ESIME Culhuacan</item>
+        <item>ESIME Ticomán</item>
+        <item>ESIME Zacatenco</item>
+        <item>ESIQIE</item>
+        <item>ESIT</item>
+        <item>ESM</item>
+        <item>EST</item>
+        <item>UPIBI</item>
+        <item>UPIEM</item>
+        <item>UPIIC</item>
+        <item>UPIICSA</item>
+        <item>UPIIG</item>
+        <item>UPIIH</item>
+        <item>UPIIP</item>
+        <item>UPIITA</item>
+        <item>UPIIZ</item>
+    </array>
+</resources>

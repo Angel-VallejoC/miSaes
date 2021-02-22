@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">miSAES</string>
+    <string name="app_preferences_key">APP_PREFERENCES_KEY</string>
 
     <string name="common_no_data_contentDescription">No data</string>
 
@@ -14,13 +15,21 @@
     <string name="login_error_message">Hubo un error al iniciar sesión. Intenta más tarde.</string>
     <string name="login_user_key">pidae_user</string>
     <string name="login_password_key">pidae_password</string>
-    <string name="login_pref_key">login_prefs</string>
     <string name="login_captcha_contentDescription">Imagen captcha</string>
     <string name="login_captcha_title">Captcha</string>
+    <string name="login_school_preference">LOGIN_SCHOOL_PREFERENCE</string>
+    <string name="login_select_school_title">Selecciona tu escuela</string>
+    <string name="login_level_title">Nivel</string>
+    <string name="login_highschool_title">Medio Superior</string>
+    <string name="login_university_title">Superior</string>
+    <string name="login_school_title">Escuela</string>
+    <string name="login_next_title">Siguiente</string>
+
 
     <string name="kardex_title">Kardex</string>
     <string name="kardex_noData_title">No hay datos para mostrar</string>
     <string name="kardex_error">Error al obtener kardex</string>
+
 
     <string name="grades_title">Calificaciones</string>
     <string name="grades_first_title">1°:</string>

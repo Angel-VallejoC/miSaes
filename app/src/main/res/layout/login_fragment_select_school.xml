@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/selectSchoolTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_md"
+        android:fontFamily="@font/product_sans_bold"
+        android:text="@string/login_select_school_title"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/text_lg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/levelTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_5xlg"
+        android:fontFamily="@font/open_sans"
+        android:text="@string/login_level_title"
+        android:textColor="@color/colorTextLight"
+        android:textSize="@dimen/text_md"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/selectSchoolTitle"
+        app:layout_constraintTop_toBottomOf="@id/selectSchoolTitle" />
+
+    <RadioGroup
+        android:id="@+id/toggle"
+        android:checkedButton="@+id/university"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        app:layout_constraintStart_toStartOf="@id/levelTitle"
+        app:layout_constraintTop_toBottomOf="@id/levelTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/margin_md"
+        android:layout_marginEnd="@dimen/margin_md"
+        android:layout_marginTop="@dimen/margin_md"
+        android:background="@drawable/login_toggle_shape"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/highSchool"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginStart="2dp"
+            android:background="@drawable/login_toggle_background"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/login_highschool_title"
+            android:textColor="@color/login_toggle_color"
+            android:textStyle="bold"/>
+
+        <RadioButton
+            android:id="@+id/university"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/login_toggle_background"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/login_university_title"
+            android:textColor="@color/login_toggle_color"
+            android:textStyle="bold"/>
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/schoolTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_5xlg"
+        android:fontFamily="@font/open_sans"
+        android:text="@string/login_school_title"
+        android:textColor="@color/colorTextLight"
+        android:textSize="@dimen/text_md"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/selectSchoolTitle"
+        app:layout_constraintTop_toBottomOf="@id/toggle" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_md"
+        app:layout_constraintEnd_toEndOf="@+id/toggle"
+        app:layout_constraintStart_toStartOf="@id/toggle"
+        app:layout_constraintTop_toBottomOf="@id/schoolTitle"
+        android:paddingVertical="@dimen/margin_xsm"
+        android:paddingHorizontal="@dimen/margin_xsm"
+        android:background="@drawable/login_spinner_shape">
+
+        <Spinner
+            android:id="@+id/school"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog"
+            android:backgroundTint="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toEndOf="@+id/toggle"
+            app:layout_constraintStart_toStartOf="@id/toggle"
+            app:layout_constraintTop_toBottomOf="@id/schoolTitle" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/buttonLine"
+        android:layout_width="fill_parent"
+        android:layout_height="0.8dp"
+        android:layout_marginBottom="@dimen/margin_sm"
+        android:background="@color/colorLines"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/nextButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_sm"
+        android:layout_marginBottom="@dimen/margin_sm"
+        android:background="@drawable/login_custom_button"
+        android:fontFamily="@font/product_sans_medium"
+        android:minHeight="0dp"
+        android:paddingStart="@dimen/login_button_margin"
+        android:paddingEnd="@dimen/login_button_margin"
+        android:paddingTop="@dimen/margin_sm"
+        android:paddingBottom="@dimen/margin_sm"
+        android:text="@string/login_next_title"
+        android:textAllCaps="false"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/text_md"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
