@@ -7,12 +7,12 @@ sencilla y práctica.
 
 # Screenshots
 
-<img src="/screenshots/screenshot-01.png" alt="screenshot image" width="250" />
-<img src="/screenshots/screenshot-02.png" alt="screenshot image" width="250" />
-<img src="/screenshots/screenshot-03.png" alt="screenshot image" width="250" />
-<img src="/screenshots/screenshot-04.png" alt="screenshot image" width="250" />
-<img src="/screenshots/screenshot-05.png" alt="screenshot image" width="250" />
-<img src="/screenshots/screenshot-06.png" alt="screenshot image" width="250" />
+<img style="display: inline;" src="/screenshots/screenshot-01.png" alt="screenshot image" width="250" />
+<img style="display: inline;" src="/screenshots/screenshot-02.png" alt="screenshot image" width="250" />
+<img style="display: inline;" src="/screenshots/screenshot-03.png" alt="screenshot image" width="250" />
+<img style="display: inline;" src="/screenshots/screenshot-04.png" alt="screenshot image" width="250" />
+<img style="display: inline;" src="/screenshots/screenshot-05.png" alt="screenshot image" width="250" />
+<img style="display: inline;" src="/screenshots/screenshot-06.png" alt="screenshot image" width="250" />
 
 
 
