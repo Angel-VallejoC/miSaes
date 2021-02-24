@@ -6,15 +6,16 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import me.angelvc.misaes.kardex.contracts.KardexContracts;
 import me.angelvc.misaes.kardex.events.KardexEvent;
+import me.angelvc.saes.scraper.SAEScraper;
 
 public class KardexPresenterImpl implements KardexContracts.Presenter {
 
     KardexContracts.View view;
     KardexContracts.Interactor interactor;
 
-    public KardexPresenterImpl(KardexContracts.View view){
+    public KardexPresenterImpl(KardexContracts.View view, SAEScraper scraper){
         this.view = view;
-        interactor = new KardexInteractorImpl();
+        interactor = new KardexInteractorImpl(scraper);
     }
 
     @Override

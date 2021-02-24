@@ -1,21 +1,22 @@
 package me.angelvc.misaes.grades;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import me.angelvc.misaes.R;
 import me.angelvc.misaes.databinding.FragmentGradesBinding;
 import me.angelvc.misaes.grades.contracts.GradesContracts;
+import me.angelvc.misaes.home.HomeActivity;
 import me.angelvc.saes.scraper.models.GradeEntry;
 
 
@@ -46,9 +47,9 @@ public class GradesFragment extends Fragment implements GradesContracts.View {
     }
 
     @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        presenter = new GradesPresenterImpl(this);
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        presenter = new GradesPresenterImpl(this, ((HomeActivity) getActivity()).scraper );
         presenter.load();
     }
 

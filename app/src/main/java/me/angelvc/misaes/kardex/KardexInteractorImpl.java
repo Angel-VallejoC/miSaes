@@ -1,21 +1,28 @@
 package me.angelvc.misaes.kardex;
 
 import org.greenrobot.eventbus.EventBus;
+
 import java.io.IOException;
+
 import me.angelvc.misaes.kardex.contracts.KardexContracts;
 import me.angelvc.misaes.kardex.events.KardexEvent;
-import me.angelvc.saes.scraper.SAESchoolsUrls;
 import me.angelvc.saes.scraper.SAEScraper;
 import me.angelvc.saes.scraper.models.Kardex;
 
 public class KardexInteractorImpl implements KardexContracts.Interactor {
+
+    private SAEScraper scraper;
+
+    public KardexInteractorImpl(SAEScraper scraper) {
+        this.scraper = scraper;
+    }
+
     @Override
     public void getKardexGrades() {
         new Thread(() -> {
-            SAEScraper saes = SAEScraper.getInstance(SAESchoolsUrls.School.UPIICSA);
             KardexEvent event = new KardexEvent();
             try {
-                Kardex kardex = saes.getKardex();
+                Kardex kardex = scraper.getKardex();
                 if (kardex.size() == 0){
                     event.setType(KardexEvent.Type.KARDEX_EMPTY);
                 }

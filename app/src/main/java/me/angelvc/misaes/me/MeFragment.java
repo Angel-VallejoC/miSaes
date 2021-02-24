@@ -1,17 +1,19 @@
 package me.angelvc.misaes.me;
 
-import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.google.android.material.snackbar.Snackbar;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import me.angelvc.misaes.R;
 import me.angelvc.misaes.databinding.FragmentMeBinding;
+import me.angelvc.misaes.home.HomeActivity;
 import me.angelvc.misaes.me.contracts.MeContracts;
 import me.angelvc.saes.scraper.models.StudentInfo;
 
@@ -37,20 +39,21 @@ public class MeFragment extends Fragment implements MeContracts.View {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_me, container, false);
         binding = FragmentMeBinding.bind(view);
+        Log.d("DEBUGMEFRAGMENT OCV", "onAttach: scraper=" + ((HomeActivity) getActivity()).scraper);
         return view;
     }
 
     @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        presenter = new MePresenterImpl(this);
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        presenter = new MePresenterImpl(this, ((HomeActivity) getActivity()).scraper );
         presenter.load();
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        presenter.stop();
+        //presenter.stop();
     }
 
     // ------------------------------------ VIEW METHODS ------------------------------------

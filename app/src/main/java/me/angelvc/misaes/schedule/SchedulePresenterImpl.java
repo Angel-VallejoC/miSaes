@@ -6,15 +6,16 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import me.angelvc.misaes.schedule.contracts.ScheduleContracts;
 import me.angelvc.misaes.schedule.events.ScheduleEvent;
+import me.angelvc.saes.scraper.SAEScraper;
 
 public class SchedulePresenterImpl implements ScheduleContracts.Presenter {
 
     ScheduleContracts.View view;
     ScheduleContracts.Interactor interactor;
 
-    public SchedulePresenterImpl(ScheduleContracts.View view){
+    public SchedulePresenterImpl(ScheduleContracts.View view, SAEScraper scraper){
         this.view = view;
-        interactor = new ScheduleInteractorImpl();
+        interactor = new ScheduleInteractorImpl(scraper);
     }
 
     @Override

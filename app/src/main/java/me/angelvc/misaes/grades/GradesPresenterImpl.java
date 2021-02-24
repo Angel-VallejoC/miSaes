@@ -6,15 +6,16 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import me.angelvc.misaes.grades.contracts.GradesContracts;
 import me.angelvc.misaes.grades.events.GradesEvent;
+import me.angelvc.saes.scraper.SAEScraper;
 
 public class GradesPresenterImpl implements GradesContracts.Presenter {
 
     GradesContracts.View view;
     GradesContracts.Interactor interactor;
 
-    public GradesPresenterImpl(GradesContracts.View view){
+    public GradesPresenterImpl(GradesContracts.View view, SAEScraper scraper){
         this.view = view;
-        interactor = new GradesInteractorImpl();
+        interactor = new GradesInteractorImpl(scraper);
     }
 
     @Override

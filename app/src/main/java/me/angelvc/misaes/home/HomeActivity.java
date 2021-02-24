@@ -1,9 +1,11 @@
 package me.angelvc.misaes.home;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,9 +13,12 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
 import me.angelvc.misaes.R;
 import me.angelvc.misaes.databinding.ActivityHomeBinding;
 import me.angelvc.misaes.login.LoginActivity;
+import me.angelvc.saes.scraper.SAEScraper;
+import me.angelvc.saes.scraper.School;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -21,12 +26,18 @@ public class HomeActivity extends AppCompatActivity {
     private NavController navController;
     private AppBarConfiguration appBarConfiguration;
 
+    public SAEScraper scraper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
+
+        String school = getSharedPreferences(getString(R.string.app_preferences_key), Context.MODE_PRIVATE)
+                .getString(getString(R.string.login_school_preference), null);
+        scraper = SAEScraper.getInstance(School.getSchoolByName(school));
 
         // Setting up navigation
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragNavHost);
@@ -58,6 +69,16 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
     }
 
     private void showLogoutDialog() {

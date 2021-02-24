@@ -6,15 +6,16 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import me.angelvc.misaes.me.contracts.MeContracts;
 import me.angelvc.misaes.me.events.MeInfoEvent;
+import me.angelvc.saes.scraper.SAEScraper;
 
 public class MePresenterImpl implements MeContracts.Presenter {
 
     MeContracts.View view;
     MeContracts.Interactor interactor;
 
-    public MePresenterImpl(MeContracts.View view){
+    public MePresenterImpl(MeContracts.View view, SAEScraper scraper){
         this.view = view;
-        interactor = new MeInteractorImpl();
+        interactor = new MeInteractorImpl(scraper);
     }
 
     @Override

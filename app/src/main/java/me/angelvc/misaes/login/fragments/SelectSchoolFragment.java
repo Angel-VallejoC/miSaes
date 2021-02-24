@@ -34,7 +34,14 @@ public class SelectSchoolFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.login_fragment_select_school, container, false);
         binding =  LoginFragmentSelectSchoolBinding.bind(view);
+        setNextButtonListener();
+        setToggleListener();
+        return view;
+    }
+
+    private void setNextButtonListener(){
         binding.nextButton.setOnClickListener((v) -> {
+            // save selected school in shared preferences
             getActivity()
                     .getSharedPreferences(getString(R.string.app_preferences_key), Context.MODE_PRIVATE)
                     .edit()
@@ -42,8 +49,6 @@ public class SelectSchoolFragment extends Fragment {
                     .apply();
             Navigation.findNavController(v).navigate(R.id.action_selectSchoolFragment_to_enterCredentialsFragments);
         });
-        setToggleListener();
-        return view;
     }
 
     private void setToggleListener() {
