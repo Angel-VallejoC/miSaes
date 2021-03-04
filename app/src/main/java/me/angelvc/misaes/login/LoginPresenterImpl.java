@@ -8,6 +8,8 @@ import me.angelvc.misaes.login.Contracts.LoginInteractor;
 import me.angelvc.misaes.login.Contracts.LoginPresenter;
 import me.angelvc.misaes.login.Contracts.LoginView;
 import me.angelvc.misaes.login.Events.LoginEvent;
+import me.angelvc.misaes.login.fragments.EnterCredentialsFragments;
+import me.angelvc.misaes.util.AppPreferences;
 import me.angelvc.saes.scraper.SAEScraper;
 
 public class LoginPresenterImpl implements LoginPresenter {
@@ -53,6 +55,7 @@ public class LoginPresenterImpl implements LoginPresenter {
 
             switch (event.getType()){
                 case LOGIN_SUCCESSFUL:
+                        AppPreferences.setLoginStatus( ((EnterCredentialsFragments) view).getActivity(), true);
                         view.loginSuccessful();
                     break;
                 case CAPTCHA_IMAGE_DOWNLOADED:

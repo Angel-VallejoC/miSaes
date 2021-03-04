@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">miSAES</string>
+
+    <!--  shared preferences keys   -->
     <string name="app_preferences_key">APP_PREFERENCES_KEY</string>
+    <string name="app_login_status">APP_LOGIN_STATUS_KEY</string>
+    <string name="app_scraper_instance">APP_SCRAPER_INSTANCE_KEY</string>
+    <string name="login_school_preference">LOGIN_SCHOOL_PREFERENCE</string>
 
     <string name="common_no_data_contentDescription">No data</string>
 
@@ -17,7 +22,6 @@
     <string name="login_password_key">pidae_password</string>
     <string name="login_captcha_contentDescription">Imagen captcha</string>
     <string name="login_captcha_title">Captcha</string>
-    <string name="login_school_preference">LOGIN_SCHOOL_PREFERENCE</string>
     <string name="login_select_school_title">Selecciona tu escuela</string>
     <string name="login_level_title">Nivel</string>
     <string name="login_highschool_title">Medio Superior</string>

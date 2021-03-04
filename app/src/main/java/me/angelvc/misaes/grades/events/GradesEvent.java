@@ -9,7 +9,8 @@ public class GradesEvent {
     public enum Type {
         GRADES_READY,
         GRADES_EMPTY,
-        ERROR
+        ERROR,
+        ERROR_SESSION_EXPIRED
     }
 
     private Type eventType;

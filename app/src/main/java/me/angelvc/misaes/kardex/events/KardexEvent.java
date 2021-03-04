@@ -6,7 +6,8 @@ public class KardexEvent {
     public enum Type {
         KARDEX_GRADES_READY,
         KARDEX_EMPTY,
-        ERROR
+        ERROR,
+        ERROR_SESSION_EXPIRED
     }
 
     private Type type;

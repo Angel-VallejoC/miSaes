@@ -4,6 +4,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import me.angelvc.misaes.home.HomeActivity;
 import me.angelvc.misaes.me.contracts.MeContracts;
 import me.angelvc.misaes.me.events.MeInfoEvent;
 import me.angelvc.saes.scraper.SAEScraper;
@@ -41,6 +42,9 @@ public class MePresenterImpl implements MeContracts.Presenter {
             case ERROR:
                 view.showError();
                 break;
+
+            case ERROR_SESSION_EXPIRED:
+                ((HomeActivity)((MeFragment) view).getActivity()).logout();
         }
     }
 

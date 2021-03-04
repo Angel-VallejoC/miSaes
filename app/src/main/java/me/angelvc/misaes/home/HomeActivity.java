@@ -1,8 +1,8 @@
 package me.angelvc.misaes.home;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -17,6 +17,7 @@ import androidx.navigation.ui.NavigationUI;
 import me.angelvc.misaes.R;
 import me.angelvc.misaes.databinding.ActivityHomeBinding;
 import me.angelvc.misaes.login.LoginActivity;
+import me.angelvc.misaes.util.AppPreferences;
 import me.angelvc.saes.scraper.SAEScraper;
 import me.angelvc.saes.scraper.School;
 
@@ -35,9 +36,21 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
 
-        String school = getSharedPreferences(getString(R.string.app_preferences_key), Context.MODE_PRIVATE)
-                .getString(getString(R.string.login_school_preference), null);
-        scraper = SAEScraper.getInstance(School.getSchoolByName(school));
+        Log.d("debug", "HomeActivity onCreate");
+
+        // if the user was previously logged in, the scraper will be retrieved from shared preferences
+        // if the user just logged in, scraper can be obtained with its getInstance method
+        Intent intent = getIntent();
+        if (intent.getSerializableExtra(getString(R.string.app_scraper_instance)) != null) {
+            try {
+                scraper = AppPreferences.getScraperInstance(AppPreferences.getScraperJson(this));
+            } catch (Exception e) {
+                logout();
+            }
+        }
+        else {
+            scraper = SAEScraper.getInstance(School.getSchoolByName(AppPreferences.getSelectedSchool(this)));
+        }
 
         // Setting up navigation
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragNavHost);
@@ -48,6 +61,14 @@ public class HomeActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
 
+        Log.d("debug", "HomeActivity onCreate:  ends");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (scraper != null)
+            AppPreferences.saveScraperInstance(this, scraper);
     }
 
     @Override
@@ -93,7 +114,10 @@ public class HomeActivity extends AppCompatActivity {
         builder.create().show();
     }
 
-    private void logout() {
+    public void logout() {
+        AppPreferences.setLoginStatus(this, false);
+        AppPreferences.deleteScraperInstance(this);
+
         startActivity(new Intent(this, LoginActivity.class)
                 .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
     }

@@ -15,7 +15,6 @@ public class LoginInteractorImpl implements LoginInteractor {
 
     private SAEScraper saes;
 
-    // TODO: change implementation to allow multiple schools
     public LoginInteractorImpl(SAEScraper scraper){
         saes = scraper;
     }

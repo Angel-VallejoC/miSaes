@@ -8,6 +8,7 @@ import java.util.List;
 import me.angelvc.misaes.schedule.contracts.ScheduleContracts;
 import me.angelvc.misaes.schedule.events.ScheduleEvent;
 import me.angelvc.saes.scraper.SAEScraper;
+import me.angelvc.saes.scraper.exceptions.SessionExpiredException;
 import me.angelvc.saes.scraper.models.ScheduleClass;
 
 public class ScheduleInteractorImpl implements ScheduleContracts.Interactor {
@@ -31,7 +32,11 @@ public class ScheduleInteractorImpl implements ScheduleContracts.Interactor {
                 else {
                     event = new ScheduleEvent(ScheduleEvent.Type.SCHEDULE_READY, schedule);
                 }
-            } catch (IOException e) {
+            }
+            catch (SessionExpiredException e){
+                event = new ScheduleEvent(ScheduleEvent.Type.ERROR_SESSION_EXPIRED, null);
+            }
+            catch (IOException e) {
                 e.printStackTrace();
                 event = new ScheduleEvent(ScheduleEvent.Type.ERROR, null);
             }

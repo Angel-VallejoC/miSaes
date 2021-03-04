@@ -7,6 +7,7 @@ import java.io.IOException;
 import me.angelvc.misaes.kardex.contracts.KardexContracts;
 import me.angelvc.misaes.kardex.events.KardexEvent;
 import me.angelvc.saes.scraper.SAEScraper;
+import me.angelvc.saes.scraper.exceptions.SessionExpiredException;
 import me.angelvc.saes.scraper.models.Kardex;
 
 public class KardexInteractorImpl implements KardexContracts.Interactor {
@@ -30,7 +31,11 @@ public class KardexInteractorImpl implements KardexContracts.Interactor {
                     event.setType(KardexEvent.Type.KARDEX_GRADES_READY);
                     event.setKardex(kardex);
                 }
-            } catch (IOException e) {
+            }
+            catch (SessionExpiredException e){
+                event.setType(KardexEvent.Type.ERROR_SESSION_EXPIRED);
+            }
+            catch (Exception e) {
                 e.printStackTrace();
                 event.setType(KardexEvent.Type.ERROR);
             }

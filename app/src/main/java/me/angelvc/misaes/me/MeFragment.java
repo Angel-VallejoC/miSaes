@@ -28,32 +28,28 @@ public class MeFragment extends Fragment implements MeContracts.View {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_me, container, false);
         binding = FragmentMeBinding.bind(view);
-        Log.d("DEBUGMEFRAGMENT OCV", "onAttach: scraper=" + ((HomeActivity) getActivity()).scraper);
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        Log.d("debug", "MeFragment onActivityCreated");
+        Log.d("debug", "MeFragment onActivityCreated: calling presenter");
         presenter = new MePresenterImpl(this, ((HomeActivity) getActivity()).scraper );
         presenter.load();
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
-        //presenter.stop();
+    public void onStop() {
+        super.onStop();
+        if (presenter != null)
+            presenter.stop();
     }
 
     // ------------------------------------ VIEW METHODS ------------------------------------

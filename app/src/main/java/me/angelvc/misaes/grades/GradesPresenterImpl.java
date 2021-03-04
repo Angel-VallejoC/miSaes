@@ -6,6 +6,8 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import me.angelvc.misaes.grades.contracts.GradesContracts;
 import me.angelvc.misaes.grades.events.GradesEvent;
+import me.angelvc.misaes.home.HomeActivity;
+import me.angelvc.misaes.me.MeFragment;
 import me.angelvc.saes.scraper.SAEScraper;
 
 public class GradesPresenterImpl implements GradesContracts.Presenter {
@@ -44,6 +46,10 @@ public class GradesPresenterImpl implements GradesContracts.Presenter {
             case ERROR:
                 view.showEmptyGrades();
                 view.showError();
+                break;
+
+            case ERROR_SESSION_EXPIRED:
+                ((HomeActivity)((GradesFragment) view).getActivity()).logout();
                 break;
         }
     }

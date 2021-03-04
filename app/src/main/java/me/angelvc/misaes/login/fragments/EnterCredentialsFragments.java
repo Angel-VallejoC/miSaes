@@ -29,6 +29,7 @@ public class EnterCredentialsFragments extends Fragment implements TextWatcher, 
 
     LoginFragmentEnterCredentialsFragmentsBinding binding;
     private LoginPresenter presenter;
+    SAEScraper scraper;
 
     public EnterCredentialsFragments() {
         // Required empty public constructor
@@ -53,14 +54,16 @@ public class EnterCredentialsFragments extends Fragment implements TextWatcher, 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        presenter.onDestroy();
+        if (presenter != null)
+            presenter.onDestroy();
     }
 
     private void init() {
         String  schoolName = getActivity()
                 .getSharedPreferences(getString(R.string.app_preferences_key), Context.MODE_PRIVATE)
                 .getString(getString(R.string.login_school_preference), null);
-        presenter = new LoginPresenterImpl(this, SAEScraper.getInstance(School.getSchoolByName(schoolName)));
+        scraper = SAEScraper.getInstance(School.getSchoolByName(schoolName));
+        presenter = new LoginPresenterImpl(this, scraper);
         presenter.onCreate();
 
         binding.user.addTextChangedListener(this);
