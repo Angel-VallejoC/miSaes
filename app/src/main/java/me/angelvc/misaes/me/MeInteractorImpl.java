@@ -1,7 +1,5 @@
 package me.angelvc.misaes.me;
 
-import android.util.Log;
-
 import org.greenrobot.eventbus.EventBus;
 
 import me.angelvc.misaes.me.contracts.MeContracts;
@@ -28,12 +26,10 @@ public class MeInteractorImpl implements MeContracts.Interactor {
                 event = new MeInfoEvent(MeInfoEvent.Type.INFO_READY, info);
             }
             catch (SessionExpiredException e){
-                Log.d("debug", "getInfo: session expired");
                 event = new MeInfoEvent(MeInfoEvent.Type.ERROR_SESSION_EXPIRED, null);
             }
             catch (Exception e) {
                 e.printStackTrace();
-                Log.d("debug", "getInfo: exception " + e.getMessage());
                 event = new MeInfoEvent(MeInfoEvent.Type.ERROR, null);
             }
             EventBus.getDefault().post(event);

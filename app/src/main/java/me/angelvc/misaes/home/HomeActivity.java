@@ -2,7 +2,6 @@ package me.angelvc.misaes.home;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -36,8 +35,6 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
 
-        Log.d("debug", "HomeActivity onCreate");
-
         // if the user was previously logged in, the scraper will be retrieved from shared preferences
         // if the user just logged in, scraper can be obtained with its getInstance method
         Intent intent = getIntent();
@@ -60,8 +57,6 @@ public class HomeActivity extends AppCompatActivity {
                 .build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
-
-        Log.d("debug", "HomeActivity onCreate:  ends");
     }
 
     @Override

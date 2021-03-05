@@ -2,7 +2,6 @@ package me.angelvc.misaes.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.util.Pair;
 
 import com.google.gson.ExclusionStrategy;
@@ -49,7 +48,6 @@ public class AppPreferences {
                 })
                 .create();
 
-        Log.d("debug", "saveScraperInstance: json=" + gson.toJson(scraper));
         getAppPreferences(context).edit().putString(
                 context.getString(R.string.app_scraper_instance), gson.toJson(scraper)
         ).apply();
@@ -62,8 +60,6 @@ public class AppPreferences {
     }
 
     public static String getScraperJson(Context context) {
-        Log.d("debug", "getScraperInstanceJson: json=" + getAppPreferences(context)
-                .getString(context.getString(R.string.app_scraper_instance), null));
         return getAppPreferences(context)
                 .getString(context.getString(R.string.app_scraper_instance), null);
     }

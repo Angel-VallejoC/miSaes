@@ -39,8 +39,6 @@ public class MeFragment extends Fragment implements MeContracts.View {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Log.d("debug", "MeFragment onActivityCreated");
-        Log.d("debug", "MeFragment onActivityCreated: calling presenter");
         presenter = new MePresenterImpl(this, ((HomeActivity) getActivity()).scraper );
         presenter.load();
     }
