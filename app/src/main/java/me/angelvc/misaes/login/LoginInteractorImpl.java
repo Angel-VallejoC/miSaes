@@ -6,7 +6,6 @@ import java.io.IOException;
 
 import me.angelvc.misaes.login.Contracts.LoginInteractor;
 import me.angelvc.misaes.login.Events.LoginEvent;
-import me.angelvc.saes.scraper.SAESchoolsUrls;
 import me.angelvc.saes.scraper.SAEScraper;
 import me.angelvc.saes.scraper.util.Pair;
 
@@ -16,9 +15,8 @@ public class LoginInteractorImpl implements LoginInteractor {
 
     private SAEScraper saes;
 
-    // TODO: change implementation to allow multiple schools
-    public LoginInteractorImpl(){
-        saes = SAEScraper.getInstance(SAESchoolsUrls.School.UPIICSA);
+    public LoginInteractorImpl(SAEScraper scraper){
+        saes = scraper;
     }
 
     @Override

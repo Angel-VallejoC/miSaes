@@ -3,32 +3,40 @@ package me.angelvc.misaes.schedule;
 import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import me.angelvc.misaes.schedule.contracts.ScheduleContracts;
 import me.angelvc.misaes.schedule.events.ScheduleEvent;
-import me.angelvc.saes.scraper.SAESchoolsUrls;
 import me.angelvc.saes.scraper.SAEScraper;
-import me.angelvc.saes.scraper.models.GradeEntry;
+import me.angelvc.saes.scraper.exceptions.SessionExpiredException;
 import me.angelvc.saes.scraper.models.ScheduleClass;
 
 public class ScheduleInteractorImpl implements ScheduleContracts.Interactor {
+
+    private SAEScraper scraper;
+
+    public ScheduleInteractorImpl(SAEScraper scraper) {
+        this.scraper = scraper;
+    }
+
     @Override
     public void getGrades() {
         new Thread(() -> {
-            SAEScraper saes = SAEScraper.getInstance(SAESchoolsUrls.School.UPIICSA);
             ScheduleEvent event;
             List<ScheduleClass> schedule;
             try {
-                schedule = saes.getStudentSchedule();
+                schedule = scraper.getStudentSchedule();
                 if (schedule.size() == 0){
                     event = new ScheduleEvent(ScheduleEvent.Type.SCHEDULE_EMPTY, schedule);
                 }
                 else {
                     event = new ScheduleEvent(ScheduleEvent.Type.SCHEDULE_READY, schedule);
                 }
-            } catch (IOException e) {
+            }
+            catch (SessionExpiredException e){
+                event = new ScheduleEvent(ScheduleEvent.Type.ERROR_SESSION_EXPIRED, null);
+            }
+            catch (IOException e) {
                 e.printStackTrace();
                 event = new ScheduleEvent(ScheduleEvent.Type.ERROR, null);
             }

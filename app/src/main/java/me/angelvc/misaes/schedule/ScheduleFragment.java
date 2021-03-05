@@ -1,12 +1,11 @@
 package me.angelvc.misaes.schedule;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -16,6 +15,7 @@ import java.util.List;
 
 import me.angelvc.misaes.R;
 import me.angelvc.misaes.databinding.FragmentScheduleBinding;
+import me.angelvc.misaes.home.HomeActivity;
 import me.angelvc.misaes.schedule.contracts.ScheduleContracts;
 import me.angelvc.saes.scraper.models.ScheduleClass;
 
@@ -26,12 +26,6 @@ public class ScheduleFragment extends Fragment implements ScheduleContracts.View
 
     public ScheduleFragment() {
         // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -46,16 +40,17 @@ public class ScheduleFragment extends Fragment implements ScheduleContracts.View
     }
 
     @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        presenter = new SchedulePresenterImpl(this);
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        presenter = new SchedulePresenterImpl(this, ((HomeActivity) getActivity()).scraper );
         presenter.load();
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
-        presenter.stop();
+    public void onStop() {
+        super.onStop();
+        if (presenter != null)
+            presenter.stop();
     }
 
     // --------------------  VIEW METHODS --------------------

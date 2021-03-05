@@ -6,7 +6,8 @@ public class MeInfoEvent {
 
     public enum Type {
         INFO_READY,
-        ERROR
+        ERROR,
+        ERROR_SESSION_EXPIRED
     }
 
     private Type eventType;

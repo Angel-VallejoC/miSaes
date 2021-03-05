@@ -1,5 +1,6 @@
 package me.angelvc.misaes.login.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -21,11 +22,14 @@ import me.angelvc.misaes.login.Contracts.LoginPresenter;
 import me.angelvc.misaes.login.Contracts.LoginView;
 import me.angelvc.misaes.login.LoginActivity;
 import me.angelvc.misaes.login.LoginPresenterImpl;
+import me.angelvc.saes.scraper.SAEScraper;
+import me.angelvc.saes.scraper.School;
 
 public class EnterCredentialsFragments extends Fragment implements TextWatcher, LoginView {
 
     LoginFragmentEnterCredentialsFragmentsBinding binding;
     private LoginPresenter presenter;
+    SAEScraper scraper;
 
     public EnterCredentialsFragments() {
         // Required empty public constructor
@@ -50,11 +54,16 @@ public class EnterCredentialsFragments extends Fragment implements TextWatcher, 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        presenter.onDestroy();
+        if (presenter != null)
+            presenter.onDestroy();
     }
 
     private void init() {
-        presenter = new LoginPresenterImpl(this);
+        String  schoolName = getActivity()
+                .getSharedPreferences(getString(R.string.app_preferences_key), Context.MODE_PRIVATE)
+                .getString(getString(R.string.login_school_preference), null);
+        scraper = SAEScraper.getInstance(School.getSchoolByName(schoolName));
+        presenter = new LoginPresenterImpl(this, scraper);
         presenter.onCreate();
 
         binding.user.addTextChangedListener(this);

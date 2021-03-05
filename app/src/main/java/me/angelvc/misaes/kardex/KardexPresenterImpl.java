@@ -4,17 +4,20 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import me.angelvc.misaes.home.HomeActivity;
 import me.angelvc.misaes.kardex.contracts.KardexContracts;
 import me.angelvc.misaes.kardex.events.KardexEvent;
+import me.angelvc.misaes.me.MeFragment;
+import me.angelvc.saes.scraper.SAEScraper;
 
 public class KardexPresenterImpl implements KardexContracts.Presenter {
 
     KardexContracts.View view;
     KardexContracts.Interactor interactor;
 
-    public KardexPresenterImpl(KardexContracts.View view){
+    public KardexPresenterImpl(KardexContracts.View view, SAEScraper scraper){
         this.view = view;
-        interactor = new KardexInteractorImpl();
+        interactor = new KardexInteractorImpl(scraper);
     }
 
     @Override
@@ -44,6 +47,9 @@ public class KardexPresenterImpl implements KardexContracts.Presenter {
                 view.showEmptyKardex();
                 view.showError();
                 break;
+
+            case ERROR_SESSION_EXPIRED:
+                ((HomeActivity)((KardexFragment) view).getActivity()).logout();
         }
     }
 
