@@ -21,7 +21,6 @@ public class LoginPresenterImpl implements LoginPresenter {
     public LoginPresenterImpl(LoginView view, SAEScraper scraper){
         this.view = view;
         this.interactor = new LoginInteractorImpl(scraper);
-        interactor.getCaptchaImage();
     }
 
     @Override
