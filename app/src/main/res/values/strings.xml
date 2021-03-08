@@ -28,6 +28,9 @@
     <string name="login_university_title">Superior</string>
     <string name="login_school_title">Escuela</string>
     <string name="login_next_title">Siguiente</string>
+    <string name="login_user_contentDescription">Campo usuario</string>
+    <string name="login_password_contentDescription">Campo contraseña</string>
+    <string name="login_captchaInput_contentDescription">Campo captcha</string>
 
 
     <string name="kardex_title">Kardex</string>
