@@ -31,6 +31,11 @@
     <dimen name="text_xlg_2">36sp</dimen>
 
 
-    <dimen name="login_button_margin">25dp</dimen>
+    <dimen name="login_button_margin">30dp</dimen>
     <dimen name="login_logo_size">70dp</dimen>
+
+    <dimen name="component_size_min">48dp</dimen>
+    <dimen name="component_size_md">56dp</dimen>
+    <dimen name="component_size_lg">64dp</dimen>
+    <dimen name="component_size_xlg">72dp</dimen>
 </resources>
