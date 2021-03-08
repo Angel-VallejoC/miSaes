@@ -6,8 +6,8 @@
 
     <color name="colorLines">#C6C6C6</color>
 
-    <color name="colorText">@android:color/black</color>
-    <color name="colorTextLight">#888888</color>
+    <color name="colorText">#212121</color>
+    <color name="colorTextLight">#484848</color>
 
     <color name="colorBackgroundLightGray">#E6E6E6</color>
 
