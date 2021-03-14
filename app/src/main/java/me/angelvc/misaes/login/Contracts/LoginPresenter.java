@@ -7,7 +7,7 @@ public interface LoginPresenter {
     void onResume();
     void onDestroy();
 
-    void login(String user, String password, String captcha);
+    void login(String user, String password, String captcha, boolean rememberMe);
 
     void onEventListener(LoginEvent event);
 }

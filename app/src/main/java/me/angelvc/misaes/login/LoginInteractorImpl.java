@@ -20,7 +20,7 @@ public class LoginInteractorImpl implements LoginInteractor {
     }
 
     @Override
-    public void login(String user, String password, String captcha) {
+    public void login(String user, String password, String captcha, boolean rememberMe) {
         if (saes == null){
             post(LoginEvent.Type.LOGIN_ERROR, "Error al ingresar a SAES", null);
         }
@@ -29,7 +29,7 @@ public class LoginInteractorImpl implements LoginInteractor {
             try {
                 Pair<Boolean, String > result = saes.login(user, password, captcha);
                 if (result.getKey()){
-                    post(LoginEvent.Type.LOGIN_SUCCESSFUL, "", null);
+                    postLoginSuccess(user, password, rememberMe);
                 }
                 else {
                     post(LoginEvent.Type.LOGIN_ERROR, result.getValue(), null);
@@ -61,6 +61,14 @@ public class LoginInteractorImpl implements LoginInteractor {
 
     public void post(LoginEvent.Type type, String message, byte[] image){
         LoginEvent event = new LoginEvent(type, message, image);
+        EventBus.getDefault().post(event);
+    }
+
+    public void postLoginSuccess(String user, String password, boolean rememberMe){
+        LoginEvent event = new LoginEvent(LoginEvent.Type.LOGIN_SUCCESSFUL, "", null);
+        event.setUser(user);
+        event.setPassword(password);
+        event.setRememberMe(rememberMe);
         EventBus.getDefault().post(event);
     }
 }

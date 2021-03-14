@@ -1,5 +1,7 @@
 package me.angelvc.misaes.login;
 
+import android.content.Context;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -41,9 +43,9 @@ public class LoginPresenterImpl implements LoginPresenter {
     }
 
     @Override
-    public void login(String user, String password, String captcha) {
+    public void login(String user, String password, String captcha, boolean rememberMe) {
         view.showProgress();
-        interactor.login(user, password, captcha);
+        interactor.login(user, password, captcha, rememberMe);
     }
 
     @Subscribe (threadMode = ThreadMode.MAIN)
@@ -52,9 +54,18 @@ public class LoginPresenterImpl implements LoginPresenter {
         if (view != null){
             view.hideProgress();
 
+            Context context = ((EnterCredentialsFragments) view).getActivity();
             switch (event.getType()){
                 case LOGIN_SUCCESSFUL:
-                        AppPreferences.setLoginStatus( ((EnterCredentialsFragments) view).getActivity(), true);
+                        AppPreferences.setLoginStatus( context, true);
+                        if (event.isRememberMeChecked()){
+                            AppPreferences.setRememberMeStatus(context, true);
+                            AppPreferences.saveUserAndPassword(context, event.getUser(), event.getPassword());
+                        }
+                        else {
+                            AppPreferences.setRememberMeStatus(context, false);
+                            AppPreferences.removeUserAndPassword(context);
+                        }
                         view.loginSuccessful();
                     break;
                 case CAPTCHA_IMAGE_DOWNLOADED:

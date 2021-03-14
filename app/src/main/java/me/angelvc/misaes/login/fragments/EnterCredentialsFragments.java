@@ -22,6 +22,7 @@ import me.angelvc.misaes.login.Contracts.LoginPresenter;
 import me.angelvc.misaes.login.Contracts.LoginView;
 import me.angelvc.misaes.login.LoginActivity;
 import me.angelvc.misaes.login.LoginPresenterImpl;
+import me.angelvc.misaes.util.AppPreferences;
 import me.angelvc.saes.scraper.SAEScraper;
 import me.angelvc.saes.scraper.School;
 
@@ -72,11 +73,28 @@ public class EnterCredentialsFragments extends Fragment implements TextWatcher, 
         binding.loginButton.setOnClickListener((v) -> {
             presenter.login(binding.user.getText().toString(),
                     binding.password.getText().toString(),
-                    binding.captcha.getText().toString());
+                    binding.captcha.getText().toString(),
+                    binding.rememberMe.isChecked());
         });
 
+        if ( AppPreferences.getRememberMeStatus(getActivity()) ){
+            binding.user.setText( AppPreferences.getUser(getActivity()) );
+            binding.password.setText( AppPreferences.getPassword(getActivity()) );
+            binding.rememberMe.setChecked(true);
+        }
+
+        binding.rememberMeButton.setOnClickListener((v) -> toggleRememberMe());
         binding.selectSchool.setOnClickListener((v) ->
                 Navigation.findNavController(v).navigate(R.id.action_enterCredentialsFragments_to_selectSchoolFragment));
+    }
+
+    public void toggleRememberMe(){
+        if (binding.rememberMe.isChecked()) {
+            binding.rememberMe.setChecked(false);
+        }
+        else {
+            binding.rememberMe.setChecked(true);
+        }
     }
 
     // ------------------------  TEXT WATCHER METHODS ---------------------------

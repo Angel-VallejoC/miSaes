@@ -11,6 +11,9 @@ public class LoginEvent {
     private Type type;
     private String message;
     private byte[] captchaImage;
+    private String user;
+    private String password;
+    private boolean rememberMe;
 
     public LoginEvent(Type type, String message, byte[] captchaImage) {
         this.type = type;
@@ -28,5 +31,29 @@ public class LoginEvent {
 
     public String getMessage() {
         return message;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isRememberMeChecked() {
+        return rememberMe;
+    }
+
+    public void setRememberMe(boolean rememberMe) {
+        this.rememberMe = rememberMe;
     }
 }

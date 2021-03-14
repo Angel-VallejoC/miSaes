@@ -8,6 +8,7 @@
 
     <color name="colorText">#212121</color>
     <color name="colorTextLight">#484848</color>
+    <color name="colorTextLighter">#6d6d6d</color>
 
     <color name="colorBackgroundLightGray">#E6E6E6</color>
 

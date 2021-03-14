@@ -2,6 +2,7 @@ package me.angelvc.misaes.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Base64;
 import android.util.Pair;
 
 import com.google.gson.ExclusionStrategy;
@@ -9,7 +10,11 @@ import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.security.Key;
 import java.util.concurrent.atomic.AtomicReference;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 import me.angelvc.misaes.R;
 import me.angelvc.saes.scraper.SAEScraper;
@@ -109,5 +114,68 @@ public class AppPreferences {
                 Context.MODE_PRIVATE);
     }
 
+    public static void setRememberMeStatus(Context context, boolean status){
+        getAppPreferences(context).edit()
+                .putBoolean(context.getString(R.string.login_rememberMe_preference), status)
+                .apply();
+    }
 
+    public static boolean getRememberMeStatus(Context context){
+        return getAppPreferences(context).getBoolean(context.getString(R.string.login_rememberMe_preference), false);
+    }
+
+    public static void saveUserAndPassword(Context context, String user, String password){
+        SharedPreferences preferences = getAppPreferences(context);
+        String userEncrypted = encrypt(context.getString(R.string.encryption_key), user);
+        String passwordEncrypted = encrypt(context.getString(R.string.encryption_key), password);
+
+        preferences.edit().putString(context.getString(R.string.login_user_preference), userEncrypted)
+                .putString(context.getString(R.string.login_password_preference), passwordEncrypted)
+                .apply();
+    }
+
+    public static void removeUserAndPassword(Context context){
+            SharedPreferences preferences = getAppPreferences(context);
+            preferences.edit().remove(context.getString(R.string.login_user_preference))
+                    .remove(context.getString(R.string.login_password_preference))
+                    .apply();
+    }
+
+    public static String getUser(Context context){
+         String userEncrypted = getAppPreferences(context).getString(context.getString(R.string.login_user_preference), null);
+         return userEncrypted == null ? "" : decrypt(context.getString(R.string.encryption_key), userEncrypted);
+    }
+
+    public static String getPassword(Context context){
+        String passwordEncrypted = getAppPreferences(context).getString(context.getString(R.string.login_password_preference), null);
+        return passwordEncrypted == null ? "" : decrypt(context.getString(R.string.encryption_key), passwordEncrypted);
+    }
+
+    private static String encrypt(String keyValue, String toEncrypt){
+        Key key = new SecretKeySpec(keyValue.getBytes(), "AES");
+        try {
+            Cipher cipher = Cipher.getInstance("AES");
+            cipher.init(Cipher.ENCRYPT_MODE, key);
+            byte[] encrypted = cipher.doFinal(toEncrypt.getBytes());
+            return new String( android.util.Base64.encode(encrypted, Base64.DEFAULT) );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    private static String decrypt(String keyValue, String toDecrypt){
+        Key key = new SecretKeySpec(keyValue.getBytes(), "AES");
+        try {
+            Cipher cipher = Cipher.getInstance("AES");
+            cipher.init(Cipher.DECRYPT_MODE, key);
+            byte[] decrypted = cipher.doFinal(Base64.decode(toDecrypt, Base64.DEFAULT));
+            return new String(decrypted);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }
