@@ -3,6 +3,8 @@ package me.angelvc.misaes.login.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -42,14 +45,18 @@ public class EnterCredentialsFragments extends Fragment implements TextWatcher, 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.login_fragment_enter_credentials_fragments, container, false);
         binding = LoginFragmentEnterCredentialsFragmentsBinding.bind(view);
-        init();
+        if ( isConnected() )
+            init();
+        else
+            showNoInternet();
         return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        presenter.onResume();
+        if (presenter != null)
+            presenter.onResume();
     }
 
     @Override
@@ -86,6 +93,28 @@ public class EnterCredentialsFragments extends Fragment implements TextWatcher, 
         binding.rememberMeButton.setOnClickListener((v) -> toggleRememberMe());
         binding.selectSchool.setOnClickListener((v) ->
                 Navigation.findNavController(v).navigate(R.id.action_enterCredentialsFragments_to_selectSchoolFragment));
+    }
+
+    private boolean isConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            // connected to the internet
+            return cm != null && cm.getActiveNetwork() != null && cm.getNetworkCapabilities(cm.getActiveNetwork()) != null;
+        } else {
+            // connected to the internet
+            return cm != null && cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnectedOrConnecting();
+        }
+    }
+
+    private void showNoInternet() {
+        AlertDialog.Builder builder = new AlertDialog.Builder( getActivity(), R.style.CustomDialogTheme);
+        builder.setTitle("No tienes conexión")
+                .setMessage("No se pudo establecer una conexión al SAES")
+                .setPositiveButton("CERRAR", (dialogInterface, i) -> {
+                    getActivity().finish();
+                })
+                .setOnCancelListener((dialog -> getActivity().finish()));
+        builder.create().show();
     }
 
     public void toggleRememberMe(){
