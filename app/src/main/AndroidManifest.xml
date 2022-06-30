@@ -15,6 +15,7 @@
         <activity android:name="me.angelvc.misaes.home.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
+            android:exported="true"
             android:name="me.angelvc.misaes.login.LoginActivity"
             android:theme="@style/LoginTheme">
             <intent-filter>
