@@ -36,7 +36,7 @@ public class ScheduleInteractorImpl implements ScheduleContracts.Interactor {
             catch (SessionExpiredException e){
                 event = new ScheduleEvent(ScheduleEvent.Type.ERROR_SESSION_EXPIRED, null);
             }
-            catch (IOException e) {
+            catch (Exception e) {
                 e.printStackTrace();
                 event = new ScheduleEvent(ScheduleEvent.Type.ERROR, null);
             }

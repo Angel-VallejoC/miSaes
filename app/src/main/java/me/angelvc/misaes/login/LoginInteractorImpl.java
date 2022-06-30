@@ -34,7 +34,7 @@ public class LoginInteractorImpl implements LoginInteractor {
                 else {
                     post(LoginEvent.Type.LOGIN_ERROR, result.getValue(), null);
                 }
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 post(LoginEvent.Type.LOGIN_ERROR, "Error al iniciar sesión", null);
             }
