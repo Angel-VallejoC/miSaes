@@ -82,6 +82,7 @@ public class EnterCredentialsFragments extends Fragment implements TextWatcher, 
                     binding.password.getText().toString(),
                     binding.captcha.getText().toString(),
                     binding.rememberMe.isChecked());
+            binding.loginButton.setEnabled(false);
         });
 
         if ( AppPreferences.getRememberMeStatus(getActivity()) ){
@@ -163,6 +164,7 @@ public class EnterCredentialsFragments extends Fragment implements TextWatcher, 
     @Override
     public void showError(String errorMessage) {
         Snackbar.make(((LoginActivity) getActivity()).binding.rootView, errorMessage, Snackbar.LENGTH_LONG).show();
+        binding.loginButton.setEnabled(true);
     }
 
     @Override
