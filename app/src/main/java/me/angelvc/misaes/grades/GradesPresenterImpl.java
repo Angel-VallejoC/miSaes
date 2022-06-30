@@ -42,6 +42,7 @@ public class GradesPresenterImpl implements GradesContracts.Presenter {
 
             case GRADES_EMPTY:
                 view.showEmptyGrades();
+                break;
 
             case ERROR:
                 view.showEmptyGrades();
