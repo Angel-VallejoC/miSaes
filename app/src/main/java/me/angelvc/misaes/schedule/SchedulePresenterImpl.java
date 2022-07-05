@@ -5,7 +5,6 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import me.angelvc.misaes.home.HomeActivity;
-import me.angelvc.misaes.me.MeFragment;
 import me.angelvc.misaes.schedule.contracts.ScheduleContracts;
 import me.angelvc.misaes.schedule.events.ScheduleEvent;
 import me.angelvc.saes.scraper.SAEScraper;
@@ -23,7 +22,7 @@ public class SchedulePresenterImpl implements ScheduleContracts.Presenter {
     @Override
     public void load() {
         EventBus.getDefault().register(this);
-        interactor.getGrades();
+        interactor.getSchedule( ((HomeActivity)((ScheduleFragment) view).getActivity()) );
     }
 
     @Override

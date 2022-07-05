@@ -22,7 +22,7 @@ public class MePresenterImpl implements MeContracts.Presenter {
     @Override
     public void load() {
         EventBus.getDefault().register(this);
-        interactor.getInfo();
+        interactor.getInfo(((HomeActivity)((MeFragment) view).getActivity()));
     }
 
     @Override

@@ -7,7 +7,6 @@ import org.greenrobot.eventbus.ThreadMode;
 import me.angelvc.misaes.home.HomeActivity;
 import me.angelvc.misaes.kardex.contracts.KardexContracts;
 import me.angelvc.misaes.kardex.events.KardexEvent;
-import me.angelvc.misaes.me.MeFragment;
 import me.angelvc.saes.scraper.SAEScraper;
 
 public class KardexPresenterImpl implements KardexContracts.Presenter {
@@ -23,7 +22,7 @@ public class KardexPresenterImpl implements KardexContracts.Presenter {
     @Override
     public void load() {
         EventBus.getDefault().register(this);
-        interactor.getKardexGrades();
+        interactor.getKardexGrades(((HomeActivity)((KardexFragment) view).getActivity()));
     }
 
     @Override

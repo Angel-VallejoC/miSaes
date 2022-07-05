@@ -1,10 +1,10 @@
 package me.angelvc.misaes.schedule.contracts;
 
-import java.util.ArrayList;
+import android.content.Context;
+
 import java.util.List;
 
 import me.angelvc.misaes.schedule.events.ScheduleEvent;
-import me.angelvc.saes.scraper.models.GradeEntry;
 import me.angelvc.saes.scraper.models.ScheduleClass;
 
 public interface ScheduleContracts {
@@ -24,6 +24,6 @@ public interface ScheduleContracts {
     }
 
     interface Interactor {
-        void getGrades();
+        void getSchedule(Context context);
     }
 }

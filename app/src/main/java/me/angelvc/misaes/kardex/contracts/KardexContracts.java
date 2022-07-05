@@ -1,5 +1,7 @@
 package me.angelvc.misaes.kardex.contracts;
 
+import android.content.Context;
+
 import me.angelvc.misaes.kardex.events.KardexEvent;
 import me.angelvc.saes.scraper.models.Kardex;
 
@@ -23,6 +25,6 @@ public interface KardexContracts {
     }
 
     interface Interactor {
-        void getKardexGrades();
+        void getKardexGrades(Context context);
     }
 }

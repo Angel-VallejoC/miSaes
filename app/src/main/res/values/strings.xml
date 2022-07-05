@@ -10,6 +10,8 @@
     <string name="login_password_preference">LOGIN_PASSWORD_PREFERENCE_KEY</string>
     <string name="login_rememberMe_preference">LOGIN_REMEMBER_ME_PREFERENCE_KEY</string>
 
+    <string name="app_session_id_key">APP_SESSION_ID_KEY</string>
+
     <string name="common_no_data_contentDescription">No data</string>
 
     <string name="home_menu_logout">Cerrar sesión</string>

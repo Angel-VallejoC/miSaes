@@ -124,6 +124,15 @@ public class AppPreferences {
         return getAppPreferences(context).getBoolean(context.getString(R.string.login_rememberMe_preference), false);
     }
 
+    public static void saveSessionId(Context context, String user){
+        String sessionId = user.concat(getAppPreferences(context).getString(context.getString(R.string.login_school_preference), null));
+        getAppPreferences(context).edit().putString(context.getString(R.string.app_session_id_key), sessionId).apply();
+    }
+
+    public static String getSessionId(Context context){
+        return getAppPreferences(context).getString(context.getString(R.string.app_session_id_key), null);
+    }
+
     public static void saveUserAndPassword(Context context, String user, String password){
         SharedPreferences preferences = getAppPreferences(context);
         String userEncrypted = encrypt(context.getString(R.string.encryption_key), user);

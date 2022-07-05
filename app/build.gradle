@@ -27,6 +27,7 @@ android {
         viewBinding true
     }
     compileOptions {
+        coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -54,4 +55,6 @@ dependencies {
     implementation "org.greenrobot:eventbus:3.2.0"
 
     implementation 'com.github.Angel-VallejoC:SAEScraper:5eeee2124eb42f76e0ef117bf71a36cf359baf97'
+
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
 }

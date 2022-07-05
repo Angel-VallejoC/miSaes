@@ -1,5 +1,7 @@
 package me.angelvc.misaes.grades.contracts;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 import me.angelvc.misaes.grades.events.GradesEvent;
@@ -22,6 +24,6 @@ public interface GradesContracts {
     }
 
     interface Interactor {
-        void getGrades();
+        void getGrades(Context context);
     }
 }

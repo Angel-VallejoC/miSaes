@@ -1,5 +1,7 @@
 package me.angelvc.misaes.me.contracts;
 
+import android.content.Context;
+
 import me.angelvc.misaes.me.events.MeInfoEvent;
 import me.angelvc.saes.scraper.models.StudentInfo;
 
@@ -19,6 +21,6 @@ public interface MeContracts {
     }
 
     interface Interactor {
-        void getInfo();
+        void getInfo(Context context);
     }
 }
