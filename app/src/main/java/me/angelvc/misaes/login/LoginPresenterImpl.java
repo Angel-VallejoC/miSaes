@@ -6,7 +6,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import me.angelvc.misaes.R;
 import me.angelvc.misaes.login.Contracts.LoginInteractor;
 import me.angelvc.misaes.login.Contracts.LoginPresenter;
 import me.angelvc.misaes.login.Contracts.LoginView;
@@ -61,7 +60,7 @@ public class LoginPresenterImpl implements LoginPresenter {
                 case LOGIN_SUCCESSFUL:
                         AppPreferences.setLoginStatus( context, true);
 
-                        if (!event.getUser().concat(context.getString(R.string.login_school_preference)).equals(AppPreferences.getSessionId(context))){
+                        if (!event.getUser().concat(AppPreferences.getSelectedSchool(context)).equals(AppPreferences.getSessionId(context))){
                             AppPreferences.saveSessionId(context, event.getUser());
                             Cache.deleteAll(context);
 
