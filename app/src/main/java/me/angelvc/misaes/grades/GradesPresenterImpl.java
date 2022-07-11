@@ -17,11 +17,11 @@ public class GradesPresenterImpl implements GradesContracts.Presenter {
     public GradesPresenterImpl(GradesContracts.View view, SAEScraper scraper){
         this.view = view;
         interactor = new GradesInteractorImpl(scraper);
+        EventBus.getDefault().register(this);
     }
 
     @Override
     public void load() {
-        EventBus.getDefault().register(this);
         interactor.getGrades(((HomeActivity)((GradesFragment) view).getActivity()));
     }
 

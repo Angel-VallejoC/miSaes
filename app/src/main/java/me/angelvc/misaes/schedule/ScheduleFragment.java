@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import me.angelvc.misaes.R;
 import me.angelvc.misaes.databinding.FragmentScheduleBinding;
 import me.angelvc.misaes.home.HomeActivity;
 import me.angelvc.misaes.schedule.contracts.ScheduleContracts;
+import me.angelvc.misaes.util.Cache;
 import me.angelvc.saes.scraper.models.ScheduleClass;
 
 public class ScheduleFragment extends Fragment implements ScheduleContracts.View {
@@ -36,6 +38,19 @@ public class ScheduleFragment extends Fragment implements ScheduleContracts.View
         binding = FragmentScheduleBinding.bind(view);
         binding.scheduleRecycler.setAdapter(new ScheduleAdapter());
         binding.scheduleRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        binding.swipeRefresh.setOnRefreshListener(() ->{
+            Cache.delete(Cache.Type.SCHEDULE, getContext());
+            if (presenter != null)
+                presenter.load();
+            binding.swipeRefresh.setRefreshing(false);
+
+            Snackbar.make(binding.getRoot(), R.string.refresh_success, BaseTransientBottomBar.LENGTH_SHORT)
+                    .setAnchorView(R.id.bottomNavigationView)
+                    .show();
+        });
+
+
         return view;
     }
 

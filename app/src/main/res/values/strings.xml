@@ -72,5 +72,6 @@
     <string name="me_error">Error al obtener información del alumno</string>
     <string name="me_fragment_tile">Alumno</string>
 
+    <string name="refresh_success">Información actualizada correctamente</string>
 
 </resources>

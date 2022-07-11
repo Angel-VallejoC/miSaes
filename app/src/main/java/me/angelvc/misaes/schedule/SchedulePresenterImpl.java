@@ -17,11 +17,11 @@ public class SchedulePresenterImpl implements ScheduleContracts.Presenter {
     public SchedulePresenterImpl(ScheduleContracts.View view, SAEScraper scraper){
         this.view = view;
         interactor = new ScheduleInteractorImpl(scraper);
+        EventBus.getDefault().register(this);
     }
 
     @Override
     public void load() {
-        EventBus.getDefault().register(this);
         interactor.getSchedule( ((HomeActivity)((ScheduleFragment) view).getActivity()) );
     }
 

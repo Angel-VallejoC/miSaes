@@ -17,11 +17,11 @@ public class KardexPresenterImpl implements KardexContracts.Presenter {
     public KardexPresenterImpl(KardexContracts.View view, SAEScraper scraper){
         this.view = view;
         interactor = new KardexInteractorImpl(scraper);
+        EventBus.getDefault().register(this);
     }
 
     @Override
     public void load() {
-        EventBus.getDefault().register(this);
         interactor.getKardexGrades(((HomeActivity)((KardexFragment) view).getActivity()));
     }
 

@@ -1,7 +1,6 @@
 package me.angelvc.misaes.me;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,12 +8,14 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import me.angelvc.misaes.R;
 import me.angelvc.misaes.databinding.FragmentMeBinding;
 import me.angelvc.misaes.home.HomeActivity;
 import me.angelvc.misaes.me.contracts.MeContracts;
+import me.angelvc.misaes.util.Cache;
 import me.angelvc.saes.scraper.models.StudentInfo;
 
 
@@ -33,6 +34,17 @@ public class MeFragment extends Fragment implements MeContracts.View {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_me, container, false);
         binding = FragmentMeBinding.bind(view);
+
+        binding.swipeRefresh.setOnRefreshListener(() ->{
+            Cache.delete(Cache.Type.STUDENT_INFO, getContext());
+            if (presenter != null)
+                presenter.load();
+            binding.swipeRefresh.setRefreshing(false);
+
+            Snackbar.make(binding.getRoot(), R.string.refresh_success, BaseTransientBottomBar.LENGTH_SHORT)
+                    .setAnchorView(R.id.bottomNavigationView)
+                    .show();
+        });
         return view;
     }
 

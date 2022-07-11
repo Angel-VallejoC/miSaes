@@ -17,11 +17,11 @@ public class MePresenterImpl implements MeContracts.Presenter {
     public MePresenterImpl(MeContracts.View view, SAEScraper scraper){
         this.view = view;
         interactor = new MeInteractorImpl(scraper);
+        EventBus.getDefault().register(this);
     }
 
     @Override
     public void load() {
-        EventBus.getDefault().register(this);
         interactor.getInfo(((HomeActivity)((MeFragment) view).getActivity()));
     }
 
