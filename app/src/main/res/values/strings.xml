@@ -73,5 +73,12 @@
     <string name="me_fragment_tile">Alumno</string>
 
     <string name="refresh_success">Información actualizada correctamente</string>
+    <string name="kardex_first_section">Primer Nivel</string>
+    <string name="kardex_second_section">Segundo Nivel</string>
+    <string name="kardex_third_section">Tercer Nivel</string>
+    <string name="kardex_fourth_section">Cuarto Nivel</string>
+    <string name="kardex_fifth_section">Quinto Nivel</string>
+    <string name="kardex_sixth_section">Sexto Nivel</string>
+    <string name="kardex_seventh_section">Séptimo Nivel</string>
 
 </resources>

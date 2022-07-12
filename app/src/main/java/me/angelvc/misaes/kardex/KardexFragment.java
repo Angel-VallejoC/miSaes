@@ -37,7 +37,6 @@ public class KardexFragment extends Fragment implements KardexContracts.View {
         binding = FragmentKardexBinding.bind(view);
         binding.kardexGradesRecycler.setAdapter(new KardexAdapter());
         binding.kardexGradesRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-
         binding.swipeRefresh.setOnRefreshListener(() ->{
             Cache.delete(Cache.Type.KARDEX, getContext());
             if (presenter != null)

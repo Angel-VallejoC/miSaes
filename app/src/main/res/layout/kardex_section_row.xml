@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardview"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_md">
+
+        <TextView
+            android:id="@+id/sectionTitle"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_md_2"
+            android:textColor="@color/colorText"
+            tools:text="Primer Nivel"
+            />
+
+        <ImageView
+            android:id="@+id/toggleArrow"
+            android:src="@drawable/ic_kardex_arrow_down"
+            android:layout_width="@dimen/component_size_min"
+            android:layout_height="@dimen/component_size_min"
+            app:layout_constraintStart_toEndOf="@id/sectionTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/sectionTitle"
+            app:layout_constraintBottom_toBottomOf="@id/sectionTitle"
+            app:layout_constraintHorizontal_bias="1"
+            />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/kardexGradesRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_sm"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sectionTitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#D3D3D3"
+        android:layout_gravity="bottom"
+        />
+
+</androidx.cardview.widget.CardView>
