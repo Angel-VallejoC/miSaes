@@ -41,6 +41,7 @@ public class SchedulePresenterImpl implements ScheduleContracts.Presenter {
 
             case SCHEDULE_EMPTY:
                 view.showEmptySchedule();
+                break;
 
             case ERROR:
                 view.showEmptySchedule();

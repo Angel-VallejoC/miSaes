@@ -54,7 +54,7 @@ dependencies {
 
     implementation "org.greenrobot:eventbus:3.2.0"
 
-    implementation 'com.github.Angel-VallejoC:SAEScraper:5eeee2124eb42f76e0ef117bf71a36cf359baf97'
+    implementation 'com.github.Angel-VallejoC:SAEScraper:a0c21dbd4ac637727e3fe838c9d16353a1ceb58e'
 
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
 }

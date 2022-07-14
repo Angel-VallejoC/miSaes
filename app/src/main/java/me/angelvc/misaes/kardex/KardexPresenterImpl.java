@@ -41,6 +41,7 @@ public class KardexPresenterImpl implements KardexContracts.Presenter {
 
             case KARDEX_EMPTY:
                 view.showEmptyKardex();
+                break;
 
             case ERROR:
                 view.showEmptyKardex();
@@ -49,6 +50,7 @@ public class KardexPresenterImpl implements KardexContracts.Presenter {
 
             case ERROR_SESSION_EXPIRED:
                 ((HomeActivity)((KardexFragment) view).getActivity()).logout();
+                break;
         }
     }
 

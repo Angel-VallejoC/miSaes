@@ -45,6 +45,7 @@ public class MePresenterImpl implements MeContracts.Presenter {
 
             case ERROR_SESSION_EXPIRED:
                 ((HomeActivity)((MeFragment) view).getActivity()).logout();
+                break;
         }
     }
 
