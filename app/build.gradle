@@ -10,8 +10,8 @@ android {
         applicationId "me.angelvc.misaes"
         minSdkVersion 23
         targetSdkVersion 32
-        versionCode 7
-        versionName "1.1"
+        versionCode 8
+        versionName "1.1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -19,9 +19,6 @@ android {
     buildTypes {
         release {
             debuggable false
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
